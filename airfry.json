@@ -1,8 +1,9 @@
 {
   "options": {
-    "input": "/airfry/templates",
-    "data": "/airfry/data",
-    "cache": "/airfry/cache",
-    "output": "/src"
+    "input": "./airfry/templates",
+    "data": "./airfry/data",
+    "public": "./airfry/public",
+    "cache": "./airfry/cache",
+    "output": "./src"
   }
 }
