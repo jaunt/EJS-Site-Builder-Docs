@@ -2,11 +2,14 @@
   "name": "airfrydocs",
   "version": "0.0.0",
   "scripts": {
+    "serve": "concurrently --kill-others \"npx airfry\" \"npm run dev\"",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@danglingdev/airfry": "~0.0.5",
+    "concurrently": "^6.5.1",
     "vite": "^2.7.2",
     "vite-plugin-windicss": "^1.6.1",
     "windicss": "^3.4.0"

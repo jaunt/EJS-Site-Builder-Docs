@@ -4,6 +4,7 @@
     "data": "./airfry/data",
     "public": "./airfry/public",
     "cache": "./airfry/cache",
-    "output": "./src"
+    "output": "./src",
+    "verbose": "true"
   }
 }
