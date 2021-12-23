@@ -1,0 +1,8 @@
+{
+  "options": {
+    "input": "/airfry/templates",
+    "data": "/airfry/data",
+    "cache": "/airfry/cache",
+    "output": "/src"
+  }
+}
