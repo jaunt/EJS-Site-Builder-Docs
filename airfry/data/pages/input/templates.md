@@ -1,0 +1,3 @@
+---
+title: Templating with EJS
+---
