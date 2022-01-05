@@ -1,3 +1,3 @@
 ---
-title: How Airfry tracks your Dependencie
+title: How Airfry tracks your Dependencies
 ---

@@ -2,4 +2,6 @@
 title: Introduction to AirFry
 ---
 
-require, resolve, reject, inputs, global, getDataFileNames, cache, log
+[workflow](/docs/workflow/)
+
+[setup](/docs/setup/)
