@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+</head>
+
+<body class="bg-red-400 p-4">
+
+  <%# -------------------------------------------------- %>
+  <%# _body is the content from the page we are wrapping %>
+  <%# -------------------------------------------------- %>
+  <%- include('_body') %>
+
+  <script type="module" src="<%- pagePath %>/<%- lastPath %>.js"></script>
+</body>
+
+</html>
+
+<script entry>
+  import "virtual:windi.css";
+  import "highlight.js/styles/atom-one-dark.css"
+</script>

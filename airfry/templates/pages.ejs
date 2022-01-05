@@ -1,26 +1,38 @@
 ---
 generate: /docs/*
+wrapper: wrappers/main
 ---
+
+<%- html %>
+
+<script entry>
+  // this is a test
+</script>
+
 <script generate>
-  var md = require('markdown-it')();
+  var md = require('markdown-it')().use(require('markdown-it-highlightjs'));
   const path = require("path");
   const fs = require("fs");
-  let pages;
+  let docs;
 
   if (!inputs.triggeredBy) {
-    pages = getDataFileNames("pages/**/*.md");
+    // get absolute paths to data files
+    docs = getDataFileNames("md/**/*.md");
   } else {
-    pages = [inputs.triggeredBy];
+    docs = [inputs.triggeredBy];
   }
 
-  posts = posts.map((filepath) => {
+  const mapped = docs.map((filepath) => {
     const raw = fs.readFileSync(filepath, "utf8");
-    const content = frontMatterParse(raw)
-    const html = md.render(content.body)
-    const title = content.attributes.title
-    const dir = filepath.split("
+    const content = frontMatterParse(raw);
+    const html = md.render(content.body);
+    const title = content.attributes.title;
+    // Use our data paths to specify output paths.
+    // Data dir is the absolute path to our data dir
+    // We also truncate the '.md' of path names.
+    const relPath = filepath.split(dataDir + "/md/")[1].slice(0, -3);
     return {
-      path: p.name,
+      path: relPath,
       data: {
         title: title,
         html: html,
@@ -29,7 +41,7 @@ generate: /docs/*
   });
 
   resolve({
-    generate: posts,
-    watchGlobs: ["pages/*.md"],
+    generate: mapped,
+    watchGlobs: ["md/**/*.md"],
   });
 </script>
