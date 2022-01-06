@@ -6,7 +6,7 @@ title: Preparing Data For All Pages
 
 Step one in Airfry's [workflow](/docs/workflow/) is to give you the opportunity to create global data for all your templates.
 
-In order to do so, you must create a file called "preGenerate.js" in your [templates directory](/docs/setup/#templates).
+In order to do so, you must create a file called "preGenerate.js" in your [templates directory](/docs/setup/#directories).
 
 The script itself can be quite simple. It can use any javascript (as well as [using npm node.js modules](/docs/underTheHood/#npm) you add to your project). It behaves similiarly to a javascript promise, in that it can either resolve or reject. See [Airfry scripting basics](/docs/scripts/) for details.
 
@@ -71,7 +71,7 @@ In the above example, writing 'data' in any template would show the formatted da
 This site was generated on the date: <%= date %>
 ```
 
-Airfry [auto dependency tracking](/docs/performance/dependencyTracking) will track to see which data you actually
+Airfry [auto dependency tracking](/docs/performance/dependencyTracking/) will track to see which data you actually
 use in your templates. If you make changes to preGenerate.md while Airfry is running, it will only re-generate
 the pages that used the data.
 

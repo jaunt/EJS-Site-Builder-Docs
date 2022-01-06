@@ -38,7 +38,7 @@ that has been included in other templates, those templates will be updated selec
 
 You can pass data to sub templates easily using EJS functionality. See the example below.
 
-The path to templates you include must be relative to the template directory you specified during [Airfry Setup](/docs/setup/#template), otherwise the dependency tracking will not work.
+The path to templates you include must be relative to the template directory you specified during [Airfry Setup](/docs/setup/#directories), otherwise the dependency tracking will not work.
 
 ```html
 <%- include('user/details', {details: user}); %>
@@ -57,3 +57,7 @@ The path to templates you include must be relative to the template directory you
 #### Wrappers
 
 See [template wrappers](/docs/input/wrappers/) for details.
+
+#### Generating multiple files from a single template.
+
+See [generate scripts](/docs/output/generateScript/) for details.

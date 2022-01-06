@@ -31,7 +31,7 @@ Call with a failure message if something goes wrong.
 
 ### global
 
-If you create data in your [pre generate script](/docs/input/preGenerate) it will be accessible here.
+If you create data in your [pre generate script](/docs/input/preGenerate/) it will be accessible here.
 
 ### getDataFileNames
 
@@ -41,7 +41,7 @@ Pass in a glob string or an array of glob strings and all of the matching file p
 
 ### cache
 
-The current cache. See [caching](/docs/performance/cache) for details.
+The current cache. See [caching](/docs/performance/cache/) for details.
 
 ### log
 
@@ -57,19 +57,56 @@ The absolute path for your data directory in case you need it for any reason.
 
 ## Resolve Data
 
-- **cache**: Data that you want to update or add to the cache. See [caching](/docs/performance/cache) for details.
-- **siteFiles**: See [output data](/docs/output/siteFiles) for details.
+- **cache**: Data that you want to update or add to the cache. See [caching](/docs/performance/cache/) for details.
+- **siteFiles**: An object which creates output files wrt your output directory. The keys are the file names and the values will be stringified with _JSON.stringify_ and written to the key specified path.
 - **generate**: An array of [page generation requests](#pageGenerationRequests).
 - **watchFiles**: request watching for changes to these files, Airfry will call this script with inputs.TriggeredBy set to the file path that change.
 - **watchGlobs**: Tell Airfry to watch glob patterns and if they change, call this script with inputs.TriggerBy set to the path that changed.
-- **outData**: See [post generate output data](/docs/output/postGenerate) for details.
+- **outData**: Output data for all generate scripts will be collected and passed to your postGenerate script if it exists. See [post generate](/docs/output/postGenerate/) for details.
 
 ## Page Generation Request Array
 
-- **path**: The path to generate the template
+When your generate script resolves, you should return a list of pages and data to run through the template. Simply return an array of objects with properites path & data.
+
+- **path**: The sub path to generate the template, which will replace the '\*' in your generate script path.
 - **data**: The data to supply to the template to be used as page variables.
 
-## Example
+Example:
+
+```html
+---
+generate: posts/*
+---
+<%= description %>
+
+<script generate>
+resolve(
+  [
+    {
+      path: "first",
+      data: {
+        description: "first post",
+      }
+    },
+    {
+      path: "second",
+      data: {
+        description: "second post",
+      }
+    },
+  ])
+```
+
+The above template will generate two posts:
+
+```
+└── output/posts/first
+    └── index.html
+└── output/posts/second
+    └── index.html
+```
+
+## Advanced example of a generate script:
 
 ```html
 <script generate>
@@ -110,6 +147,13 @@ The absolute path for your data directory in case you need it for any reason.
   });
 
   resolve({
+    siteFiles: {
+      ["README.md"]: "*This will get generated!*",
+    },
+    postData: {
+      someData: "This will be passed to your post generate script.",
+      otherData: "This will also be passed to your post generate script.",
+    },
     // the list of pages to generate through this template:
     generate: mapped,
     // Tell airfry which data files to watch.
