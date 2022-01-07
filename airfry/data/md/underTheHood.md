@@ -20,7 +20,7 @@ This should not be a surprise to you if you use NPM in your other projects. You 
 
 As of Jan 2022, typescript has yet to fully support ESM modules, and the Node JS ecosystem is much more mature when it comes to Common JS. What does this mean for you?
 
-In your [generate scripts](/docs/output/generateScript) you have access to "require", which allows you to import modules you add via npm to your project.
+In your [generate scripts](/docs/output/generateScript/) you have access to "require", which allows you to import modules you add via npm to your project.
 
 If you try to "require" scripts that are ESM only, they will not work.
 

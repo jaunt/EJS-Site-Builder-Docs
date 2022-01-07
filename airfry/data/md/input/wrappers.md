@@ -37,4 +37,4 @@ Here's an example of a template wrapper:
 The include for **"\_body"** will be replaced the content generated from whichever template wrapped itself.
 
 **Note:** \<script entry\> is a special cue telling Airfry to generate an entry script for tools like Vite or Webpack.
-It doesn't end up in the output html file. See [entry script integration](/docs/integration/entryScript) for details.
+It doesn't end up in the output html file. See [entry scripts](/docs/scripts/) for details.

@@ -8,4 +8,4 @@ Many existing static site generators make it easy for you to add images to your 
 
 Rebuilds should be fast!
 
-There are much better ways to process and include images on your Airfry generated site [here](/docs/integration/images).
+There are much better ways to process and include images on your Airfry generated site [here](/docs/integration/images/).

@@ -95,7 +95,7 @@ In the case above, your html and entry script will be written as:
     └── about.js
 ```
 
-When using vite, this will all work out very nicely. When building for production, you can use the postGenerate script to generate the rollupOptions with the entry points that were created. See [vite integration](/docs/integration/vite) for an example.
+When using vite, this will all work out very nicely. When building for production, you can use the postGenerate script to generate the rollupOptions with the entry points that were created. See [vite integration](/docs/integration/vite/) for an example.
 
 #### Lib Scripts
 
@@ -119,4 +119,4 @@ Obviously we wouldn't want this code to be written multiple times a component in
 
 Of course if a template includes your button sub-template, you'd want to include the lib file in its entry script.
 
-See [alpine.js integration](/docs/integration/alpinejs) for an example.
+See [alpine.js integration](/docs/integration/alpinejs/) for an example.

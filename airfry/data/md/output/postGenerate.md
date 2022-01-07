@@ -22,7 +22,7 @@ Your postGenerate.js script will have access to a javascript object called "outp
 
 The type "FilesWritten" above is a javascript object where keys are the template names which caused the output, and values are the paths of they outputs they generated.
 
-[Generate scripts](/docs/output/generateScript) can include an "outData" object which lets you collect information during your build for the purposes of summarizing your build. That data is also accessible in the "output" object as a key value pairs, key being the template name, value being the data.
+[Generate scripts](/docs/output/generateScript/) can include an "outData" object which lets you collect information during your build for the purposes of summarizing your build. That data is also accessible in the "output" object as a key value pairs, key being the template name, value being the data.
 
 Here's an example of what supplying output data would look like in your generate scripts:
 
