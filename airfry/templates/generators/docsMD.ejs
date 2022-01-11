@@ -1,9 +1,9 @@
 <script generate>
   var md = require('markdown-it')().use(require('markdown-it-highlightjs'));
   const path = require("path");
-  const fs = require("fs");
   let docs;
 
+  const fs = require("fs");
   if (!inputs.triggeredBy) {
     // get absolute paths to data files
     docs = getDataFileNames("md/**/*.md");
@@ -11,7 +11,7 @@
     docs = [inputs.triggeredBy];
   }
 
-  const mapped = docs.map((filepath) => {
+  let mapped = docs.map((filepath) => {
     const raw = fs.readFileSync(filepath, "utf8");
     const content = frontMatterParse(raw);
     const html = md.render(content.body);
@@ -28,6 +28,21 @@
       },
     };
   });
+
+  // add index page
+  mapped.push({
+    path: "",
+    data: {
+      toc: true,
+      title: "Table of Contents",
+      pages: mapped.map(item => {
+        return {
+          url: item.path,
+          title: item.data.title,
+        }
+      }),
+    },
+  })
 
   resolve({
     generate: mapped,

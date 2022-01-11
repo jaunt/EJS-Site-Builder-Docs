@@ -16,7 +16,15 @@ The file name. Sometimes you have data in your file system where you want to use
 
 #### lastPath
 
-This is the last part of the path. For example if an output file was src/input/**frontmatter**/index.html, lastPath would be **frontmatter**
+This is the last part of the path. For example if an output file was src/input/**mypage**/index.html, lastPath would be **mypage**.
+
+For the root path, lastPath will be "main". See [vite integration](/docs/integration/vite) for why this is useful.
+
+This would also be the name of an entry script if you chose to generate one. This would allow you to include your generate script from your html if necessary like so:
+
+```
+  <script type="module" src="<%- pagePath %>/<%- lastPath %>.js"></script>
+```
 
 #### global
 

@@ -1,0 +1,25 @@
+---
+generate: /docs/*
+wrapper: wrappers/main
+---
+<% if (locals.toc) { %>
+
+<%# Show table of contents %>
+<% locals.pages.forEach(item=>{ %>
+Title: <%= item.title %>
+Url: <a class="airfryLink" href="/docs/<%= item.url %>/">Link</a>
+
+<% }); %>
+<% } else { %>
+
+<%# Show page %>
+<%- html %>
+
+<% } %>
+
+<script entry>
+  // this is a test
+</script>
+
+<script generate-use:"generators/docsMD">
+</script>

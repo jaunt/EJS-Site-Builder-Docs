@@ -1,13 +1,10 @@
 ---
 generate: /
 title: Airfry Documentation
-fruits: [orange, apple, grape, pear]
 wrapper: wrappers/main
 ---
 
-
-<ul>
-  <% fruits.forEach(function(fruit){ %>
-  <%- include('fruitTemplate', {name: fruit}); %>
-  <% }); %>
-</ul>
+<div class="font-bold text-size-xl text-white">
+  Welcome to Airfry
+</div>
+<a class="airfryLink" href="/docs/">Documentation</a>
