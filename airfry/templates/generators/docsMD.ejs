@@ -4,9 +4,12 @@
   let docs;
 
   const fs = require("fs");
+
+  const docsDir = inputs.frontMatter.docsDir
+
   if (!inputs.triggeredBy) {
     // get absolute paths to data files
-    docs = getDataFileNames("md/**/*.md");
+    docs = getDataFileNames(docsDir + "/**/*.md");
   } else {
     docs = [inputs.triggeredBy];
   }
@@ -19,7 +22,8 @@
     // Use our data paths to specify output paths.
     // Data dir is the absolute path to our data dir
     // We also truncate the '.md' of path names.
-    const relPath = filepath.split(dataDir + "/md/")[1].slice(0, -3);
+    const relPath = filepath.split(dataDir + "/" +
+      docsDir + "/")[1].slice(0, -3);
     return {
       path: relPath,
       data: {
@@ -46,6 +50,6 @@
 
   resolve({
     generate: mapped,
-    watchGlobs: ["md/**/*.md"],
+    watchGlobs: [docsDir + "/**/*.md"],
   });
 </script>

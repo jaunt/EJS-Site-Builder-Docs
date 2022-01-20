@@ -16,7 +16,7 @@ After that, just look at examples and you'll learn quickly.
 
 #### Variable replacement
 
-Variables can come from [front matter](/docs/input/frontmatte/), [preGenerate data](/docs/input/preGenerate/), the template's [generate script](/docs/output/generateScript/), or [data automatically provided by Airfry](/docs/input/calculated/), or data passed via EJS to sub templates using "include".
+Variables can come from [front matter](/docs/templates/frontmatte/), [preGenerate data](/docs/templates/preGenerate/), the template's [generate script](/docs/templates/generateScript/), or [data automatically provided by Airfry](/docs/templates/calculated/), or data passed via EJS to sub templates using "include".
 
 ```html
 The title of this post is <%= title %>
@@ -44,6 +44,8 @@ The path to templates you include must be relative to the template directory you
 <%- include('user/details', {details: user}); %>
 ```
 
+In the example above, Airfy will look for a tepmlate called **details.ejs** in a folder it expects to be called _user_ under your templates directory.
+
 #### Using javascript to iterate through data
 
 ```javascript
@@ -56,8 +58,8 @@ The path to templates you include must be relative to the template directory you
 
 #### Wrappers
 
-See [template wrappers](/docs/input/wrappers/) for details.
+See [template wrappers](/docs/templates/wrappers/) for details.
 
 #### Generating multiple files from a single template.
 
-See [generate scripts](/docs/output/generateScript/) for details.
+See [generate scripts](/docs/templates/generateScript/) for details.

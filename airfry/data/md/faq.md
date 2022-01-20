@@ -19,7 +19,7 @@ Airfry is a javascript site generator. It wants you do live and breath javascrip
 
 ### Does Airfry support Markdown?
 
-Yes. Airfry leaves it up to you to parse your own data files and pass them to your EJS templates using your [generate scripts](/docs/output/generateScript/).
+Yes. Airfry leaves it up to you to parse your own data files and pass them to your EJS templates using your [generate scripts](/docs/templates/generateScript/).
 
 It's very easy to parse markdown in this way. See the generate script used to make these Airfry Docs how it uses the awesome [markdown-it](https://github.com/markdown-it/markdown-it) npm module to parse markdown files:
 
@@ -31,7 +31,7 @@ The [Airfry Gallery](/docs/gallery/) may have interesting example for you to get
 
 ### Does Airfry support other Templating Languages?
 
-Yes. See the question above regarding Markdown. Instead of using the markdown-it NPM module in your [generate scripts](/docs/output/generateScript/), you could find an NPM module for the templating language of your choice, whether it be [handlebars](https://handlebarsjs.com/), [liquid](https://shopify.github.io/liquid/), [nunjucks](https://mozilla.github.io/nunjucks/) etc.
+Yes, but not as first class citizens. See the question above regarding Markdown. Instead of using the markdown-it NPM module in your [generate scripts](/docs/templates/generateScript/), you could find an NPM module for the templating language of your choice, whether it be [handlebars](https://handlebarsjs.com/), [liquid](https://shopify.github.io/liquid/), [nunjucks](https://mozilla.github.io/nunjucks/) etc.
 
 ### Should I use other template languages besides EJS?
 

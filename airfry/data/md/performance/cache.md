@@ -4,7 +4,7 @@ title: Caching
 
 # Caching API and computed data for quick rebuilds
 
-It's likely you might be working on your site for hours at a time. If your site uses external APIs to pull data for page generation, or relies on the creation of intensive computed data in your [generate scripts](/docs/output/generateScript/), you'll likely want to cache the data so that rebuilding the site is fast (until your cache expires or you clear it for a production build).
+It's likely you might be working on your site for hours at a time. If your site uses external APIs to pull data for page generation, or relies on the creation of intensive computed data in your [generate scripts](/docs/templates/generateScript/), you'll likely want to cache the data so that rebuilding the site is fast (until your cache expires or you clear it for a production build).
 
 Generate scripts have access to "cache", which is a simple javascript object.
 

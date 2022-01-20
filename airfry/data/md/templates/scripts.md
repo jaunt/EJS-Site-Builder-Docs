@@ -12,7 +12,7 @@ You should consider scripts in two categories.
 
 When you want to create html pages based on data, you write javascript which Airfry runs through as it builds your site. These are called generate scripts.
 
-Airfry treats generate scripts like they are the body of a [javascript promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). You probably don't need to know about promises in detail to use Airfry. Just understand that you can do what ever you want asynchronously, and when you are done, call 'resolve' with the page generation requests and related data, or 'reject' with an error. Find out more details in the [generate script](/docs/output/generateScript/) documentation.
+Airfry treats generate scripts like they are the body of a [javascript promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). You probably don't need to know about promises in detail to use Airfry. Just understand that you can do what ever you want asynchronously, and when you are done, call 'resolve' with the page generation requests and related data, or 'reject' with an error. Find out more details in the [generate script](/docs/templates/generateScript/) documentation.
 
 #### Embedding in Templates
 
@@ -38,7 +38,7 @@ When Airfry processes the template above, it will strip out the generate script 
 Airfry honours two special scripts, one that is guaranteed to run before anything else, and one that runs after your site build is complete. The pre generation script is a great place to call and cache api responses, build up a table of contents, etc. The post generation script is a good place to summarize the results of your build, likely writing log information or to a json
 file which your web app or devop tools can injest.
 
-Refer to the [pre generate](/docs/input/preGenerate/) and [post generate](/docs/output/postGenerate/) documentation for details.
+Refer to the [pre generate](/docs/templates/preGenerate/) and [post generate](/docs/templates/postGenerate/) documentation for details.
 
 ## Webpage Scripts (run-time)
 
@@ -108,7 +108,7 @@ Consider a hypothetical sub-template for widget you are designing:
 ```html
 <div>my button widget</div>
 <script lib>
-  // this code will end up in /output/components/button.js
+  // this code will end up in /templates/components/button.js
   // It should be run-time webapp code to make your button interactive
 </script>
 ```

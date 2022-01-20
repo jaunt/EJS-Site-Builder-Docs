@@ -31,7 +31,7 @@ Call with a failure message if something goes wrong.
 
 ### global
 
-If you create data in your [pre generate script](/docs/input/preGenerate/) it will be accessible here.
+If you create data in your [pre generate script](/docs/templates/preGenerate/) it will be accessible here.
 
 ### getDataFileNames
 
@@ -62,7 +62,7 @@ The absolute path for your data directory in case you need it for any reason.
 - **generate**: An array of [page generation requests](#pageGenerationRequests).
 - **watchFiles**: request watching for changes to these files, Airfry will call this script with inputs.TriggeredBy set to the file path that change.
 - **watchGlobs**: Tell Airfry to watch glob patterns and if they change, call this script with inputs.TriggerBy set to the path that changed.
-- **outData**: Output data for all generate scripts will be collected and passed to your postGenerate script if it exists. See [post generate](/docs/output/postGenerate/) for details.
+- **outData**: Output data for all generate scripts will be collected and passed to your postGenerate script if it exists. See [post generate](/docs/templates/postGenerate/) for details.
 
 ## Page Generation Request Array
 
@@ -163,3 +163,21 @@ The above template will generate two posts:
   });
 </script>
 ```
+
+### Reusing Generate Scripts
+
+To re-use a generate script which already exists in your project, use **generate-use** as follows
+
+```
+<script generate-use:"templateName">
+</script>
+```
+
+A common pattern is to create a template with only the generate script specified.
+
+You can see an example of how this works in the docs for this site:
+
+[docsMD.ejs](https://github.com/jaunt/airfryDocs/blob/main/airfry/templates/generators/docsMD.ejs).
+
+The above generate script is referenced from this template:
+[pages.ejs](https://github.com/jaunt/airfryDocs/blob/main/airfry/templates/pages.ejs)

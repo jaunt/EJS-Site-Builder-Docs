@@ -25,9 +25,9 @@ Or specify in a file called **airfry.json**:
 
 ```javascript
 	{
-		input:"./airfry/input",
+		input:"./airfry/templates",
 		data: "./airfry/data",
-		output: "./airfry/output",
+		output: "./airfry/templates",
 		public: "./airfry/public",
 		cache: "./airfry/cache",
 		verbose:  false,
@@ -42,7 +42,7 @@ Templates must be in this directory. Airfry will search recursively at build tim
 
 ## Data Directory
 
-This is where you'd put data files whether JSON, markdown, or any other format you choose to support in your template [generate scripts](/docs/output/generateScript/). Airfry will monitor this folder when checking for [data dependency changes](/docs/performance/dependencyTracking/).
+This is where you'd put data files whether JSON, markdown, or any other format you choose to support in your template [generate scripts](/docs/templates/generateScript/). Airfry will monitor this folder when checking for [data dependency changes](/docs/performance/dependencyTracking/).
 
 ## Output Directory
 

@@ -63,7 +63,7 @@ See [caching](/docs/performance/cache/) for details.
 
 #### global
 
-Must be an object with fields which can be accessed in your templates just as you do [front matter](/docs/input/frontmatter/).
+Must be an object with fields which can be accessed in your templates just as you do [front matter](/docs/templates/frontmatter/).
 
 In the above example, writing 'data' in any template would show the formatted date as follows:
 

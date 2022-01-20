@@ -28,7 +28,7 @@
     "windicss": "^3.4.0"
   },
   "dependencies": {
-    "@danglingdev/airfry": "^0.0.8",
+    "@danglingdev/airfry": "^0.0.9",
     "markdown-it": "^12.3.2",
     "markdown-it-highlightjs": "^3.6.0"
   }

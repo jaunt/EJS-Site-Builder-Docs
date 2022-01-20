@@ -1,15 +1,20 @@
 ---
 generate: /docs/*
 wrapper: wrappers/main
+docsDir: md
 ---
+
 <% if (locals.toc) { %>
 
-<%# Show table of contents %>
-<% locals.pages.forEach(item=>{ %>
-Title: <%= item.title %>
-Url: <a class="airfryLink" href="/docs/<%= item.url %>/">Link</a>
-
-<% }); %>
+<div class="container">
+  <%# Show table of contents %>
+  <% locals.pages.forEach(item=>{ %>
+  <div class="border-red-700 bg-blue-200 rounded-xl w-16">
+    Title: <%= item.title %>
+    Url: <a class="airfryLink" href="/docs/<%= item.url %>/">Link</a>
+  </div>
+  <% }); %>
+</div>
 <% } else { %>
 
 <%# Show page %>
