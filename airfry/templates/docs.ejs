@@ -6,19 +6,34 @@ docsDir: md
 
 <% if (locals.toc) { %>
 
-<div class="container">
+<div class="font-bold text-size-xl bg-red-600 m-12 text-white p-2 rounded-sm">
+  Table Of Contents
+</div>
+
+<div class="container p-12 m-12 flex flex-col">
   <%# Show table of contents %>
-  <% locals.pages.forEach(item=>{ %>
-  <div class="border-red-700 bg-blue-200 rounded-xl w-16">
-    Title: <%= item.title %>
-    Url: <a class="airfryLink" href="/docs/<%= item.url %>/">Link</a>
+  <% pages.forEach(item=>{ %>
+  <div class="mr-2 flex flex-row">
+    <div><a class="airfryLink" href="/docs/<%= item.url %>/"><%= item.title %></a></div>
   </div>
   <% }); %>
 </div>
 <% } else { %>
 
 <%# Show page %>
-<%- html %>
+<div class="grid grid-cols-4">
+  <div class="col-span-1">
+    <% pages.forEach(item=>{ %>
+    <div class="mr-2 flex flex-row">
+      <div><a class="airfryLink" href="/docs/<%= item.url %>/"><%= item.title %></a></div>
+    </div>
+    <% }); %>
+  </div>
+  <div class="col-span-3">
+    <div class="text-blue-600"><%= pageName %> <%= pagePath %></div>
+    <%- html %>
+  </div>
+</div>
 
 <% } %>
 

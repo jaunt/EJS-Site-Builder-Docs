@@ -33,18 +33,26 @@
     };
   });
 
+  const toc = mapped.map(item => {
+    return {
+      url: item.path,
+      title: item.data.title,
+    }
+  })
+
+  // add index to pages
+  mapped = mapped.map(item => {
+    item.data.pages = toc;
+    return item
+  })
+
   // add index page
   mapped.push({
     path: "",
     data: {
       toc: true,
       title: "Table of Contents",
-      pages: mapped.map(item => {
-        return {
-          url: item.path,
-          title: item.data.title,
-        }
-      }),
+      pages: toc,
     },
   })
 
