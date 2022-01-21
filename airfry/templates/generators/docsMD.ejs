@@ -46,16 +46,6 @@
     return item
   })
 
-  // add index page
-  mapped.push({
-    path: "",
-    data: {
-      toc: true,
-      title: "Table of Contents",
-      pages: toc,
-    },
-  })
-
   resolve({
     generate: mapped,
     watchGlobs: [docsDir + "/**/*.md"],

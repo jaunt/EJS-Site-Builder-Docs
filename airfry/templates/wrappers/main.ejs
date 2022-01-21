@@ -8,13 +8,11 @@
   <title><%= title %></title>
 </head>
 
-<body class="p-4">
+<body class="p-8">
 
   <%# -------------------------------------------------- %>
   <%# _body is the content from the page we are wrapping %>
   <%# -------------------------------------------------- %>
-  <%- pagePath %>
-
   <%- include('_body') %>
 
   <script type="module" src="<%- entryScript %>"></script>
@@ -24,5 +22,5 @@
 
 <script entry>
   import "virtual:windi.css";
-  //import "highlight.js/styles/atom-one-dark.css"
+  import "highlight.js/styles/atom-one-dark.css"
 </script>

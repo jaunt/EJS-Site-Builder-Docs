@@ -4,38 +4,30 @@ wrapper: wrappers/main
 docsDir: md
 ---
 
-<% if (locals.toc) { %>
-
-<div class="font-bold text-size-xl bg-red-600 m-12 text-white p-2 rounded-sm">
-  Table Of Contents
-</div>
-
-<div class="container p-12 m-12 flex flex-col">
-  <%# Show table of contents %>
-  <% pages.forEach(item=>{ %>
-  <div class="mr-2 flex flex-row">
-    <div><a class="airfryLink" href="/docs/<%= item.url %>/"><%= item.title %></a></div>
-  </div>
-  <% }); %>
-</div>
-<% } else { %>
-
 <%# Show page %>
-<div class="grid grid-cols-4">
-  <div class="col-span-1">
+<div class="grid grid-cols-4 w-full">
+  <div class="col-span-4 bg-blue-600 rounded-lg text-white px-4 py-1 font-black">
+    AIRFRY
+  </div>
+  <div class="col-span-1 prose-sm prose-blue my-4">
     <% pages.forEach(item=>{ %>
-    <div class="mr-2 flex flex-row">
-      <div><a class="airfryLink" href="/docs/<%= item.url %>/"><%= item.title %></a></div>
+    <div class="mr-2 my-2 flex flex-row">
+      <% if (pagePath == "/docs/"+item.url ) { %>
+      <div class="font-bold"><%= item.title %></div>
+      <% } else { %>
+      <a href="/docs/<%= item.url %>/"><%= item.title %></a>
+      <% } %>
     </div>
     <% }); %>
   </div>
-  <div class="col-span-3">
-    <div class="text-blue-600"><%= pageName %> <%= pagePath %></div>
+  <div class="col-span-3 prose prose-red m-auto py-8">
+    <% if (!Boolean(html)) { %>
+    <span class="font-black">TODO</span>
+    <% } else { %>
     <%- html %>
+    <% } %>
   </div>
 </div>
-
-<% } %>
 
 <script entry>
   // this is a test

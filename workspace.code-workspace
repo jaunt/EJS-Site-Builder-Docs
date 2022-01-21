@@ -1,0 +1,11 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "workbench.iconTheme": "eq-material-theme-icons-ocean",
+    "workbench.colorTheme": "Noctis Azureus"
+  }
+}
