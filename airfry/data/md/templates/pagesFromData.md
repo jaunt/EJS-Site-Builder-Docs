@@ -8,7 +8,7 @@ Writing [EJS templates](https://ejs.co/) is not hard. Nor is writing HTML. But i
 
 For example, consider a blog. It's likely that you'd want to estabilsh a consistent look and feel, and then you'd start adding posts. At some point you might want to modernized your look and feel. It would be pretty awful to have to go through every single post to "update" the way they look. Better would be to have a template which renders your content, so that if you chance the template, all the posts would update.
 
-Most static site generators offer interesting canned ways of doing this. For example maybe you specify a content folder and the tool scans and renders markdown files. Maybe it supports any kind of template by default, and it automatically scans all your folders looking for tags and tries to create a blog for you. **Aifry does none of this, by design.**
+Most site generators offer interesting canned ways of doing this. For example maybe you specify a content folder and the tool scans and renders markdown files. Maybe it supports any kind of template by default, and it automatically scans all your folders looking for tags and tries to create a blog for you. **Aifry does none of this, by design.**
 
 Instead, Airfry lets you add a generate scripts to templates.
 

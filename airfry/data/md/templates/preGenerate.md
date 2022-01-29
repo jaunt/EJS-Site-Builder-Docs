@@ -4,7 +4,7 @@ title: Preparing Data For All Pages
 
 # Preparing Data For All Pages
 
-Step one in Airfry's [workflow](/docs/workflow/) is to give you the opportunity to create global data for all your templates.
+Step one in Airfry's [workflow](/docs/intro/) is to give you the opportunity to create global data for all your templates.
 
 In order to do so, you must create a file called "preGenerate.js" in your [templates directory](/docs/setup/#directories).
 
