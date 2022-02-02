@@ -11,7 +11,13 @@
     // get absolute paths to data files
     docs = getDataFileNames(docsDir + "/**/*.md");
   } else {
-    docs = [inputs.triggeredBy];
+    if (inputs.triggeredBy.reason != "Deleted") {
+      docs = [inputs.triggeredBy.path];
+    } else {
+      // else ignore deleted data files.
+      resolve();
+      return;
+    }
   }
 
   let mapped = docs.map((filepath) => {
@@ -19,6 +25,7 @@
     const content = frontMatterParse(raw);
     const html = md.render(content.body);
     const title = content.attributes.title;
+    const order = content.attributes.order;
     // Use our data paths to specify output paths.
     // Data dir is the absolute path to our data dir
     // We also truncate the '.md' of path names.
@@ -29,25 +36,67 @@
       data: {
         title: title,
         html: html,
+        order: order,
       },
     };
   });
 
-  const toc = mapped.map(item => {
-    return {
-      url: item.path,
-      title: item.data.title,
+
+  let toc
+
+  if (inputs.triggeredBy) {
+    const page = mapped[0]
+    // for a single page, we need to restore
+    // the toc from cache and update it
+    toc = cache["toc"].data
+    const index = toc.findIndex((item) => {
+      return item.path == page.path;
+    })
+    let update = {
+      url: page.path,
+      title: page.data.title,
+      order: page.order,
     }
+    if (index == -1) {
+      // must be a new page
+      toc.push(update)
+    } else {
+      toc[index] = update;
+    }
+  } else {
+    // a full update rebuilds the table of contents
+
+    toc = mapped.map(item => {
+      return {
+        url: item.path,
+        title: item.data.title,
+        order: item.data.order,
+      }
+    });
+  }
+
+  toc.sort((a, b) => {
+    return a.order - b.order
   })
 
-  // add index to pages
+
+  console.log(toc)
+
+  // store the toc in cache
+  cache["toc"] = {
+    data: toc,
+  }
+
+  // add table of contents to every page
   mapped = mapped.map(item => {
     item.data.pages = toc;
     return item
-  })
+  });
+
+  generate(mapped);
 
   resolve({
-    generate: mapped,
     watchGlobs: [docsDir + "/**/*.md"],
+    cache: cache,
   });
 </script>

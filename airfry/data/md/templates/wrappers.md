@@ -1,5 +1,6 @@
 ---
 title: Template Wrappers
+order: 11
 ---
 
 # Wrapping Templates

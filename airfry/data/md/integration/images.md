@@ -1,5 +1,6 @@
 ---
 title: Image Handling
+order: 15.7
 ---
 
 # Recommendations for Image Handling

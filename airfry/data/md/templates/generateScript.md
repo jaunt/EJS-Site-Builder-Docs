@@ -1,5 +1,6 @@
 ---
 title: Generating Scripts
+order: 8
 ---
 
 # Generate Scripts

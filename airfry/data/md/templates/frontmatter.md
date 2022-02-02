@@ -1,5 +1,6 @@
 ---
 title: Front Matter Page Variables
+order: 6
 ---
 
 # Template Front Matter

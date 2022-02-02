@@ -1,6 +1,17 @@
 ---
 title: Setup
+order: 2
 ---
+
+## Install
+
+### Global
+
+npm add @danglingdev/airfry -g
+
+### Project
+
+npm add @danglingdev/airfry
 
 # Near Zero Config
 

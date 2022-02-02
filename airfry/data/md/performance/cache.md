@@ -1,5 +1,6 @@
 ---
 title: Caching
+order: 14
 ---
 
 # Caching API and computed data for quick rebuilds
@@ -22,7 +23,7 @@ When resolving output data, you can update the cache for the keys you want by sp
 ```javascript
 {
   data: data; // a JSON Stringifyable Object
-  expires: expires; // tje time of expiry in ms since the Unix Epoch.
+  expires: expires; // optional: time of expiry in ms since the Unix Epoch.
 }
 ```
 

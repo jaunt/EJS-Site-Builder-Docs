@@ -1,5 +1,6 @@
 ---
 title: Scripting Basics
+order: 4
 ---
 
 # Airfry Scripting Basics

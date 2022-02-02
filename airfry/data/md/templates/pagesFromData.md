@@ -1,5 +1,6 @@
 ---
 title: Making Pages From Data
+order: 5
 ---
 
 # Making Pages From Data

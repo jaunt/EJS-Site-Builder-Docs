@@ -1,5 +1,6 @@
 ---
 title: Calculated Template Variables
+order: 7
 ---
 
 # Reserved Variables passed to your templates automatically.

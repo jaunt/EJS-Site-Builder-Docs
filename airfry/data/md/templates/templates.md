@@ -1,5 +1,6 @@
 ---
 title: Templating with EJS
+order: 3
 ---
 
 # Templating with EJS
