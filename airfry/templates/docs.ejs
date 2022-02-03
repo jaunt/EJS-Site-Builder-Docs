@@ -5,13 +5,13 @@ docsDir: md
 ---
 
 <%# Show page %>
-<div class="grid grid-cols-4 w-full">
-  <div class="col-span-4 bg-blue-600 rounded-lg text-white px-4 py-1 font-black">
+<div class="grid grid-cols-5 w-full">
+  <div class="col-span-5 bg-blue-600 rounded-lg text-white px-4 py-1 mb-4 font-black">
     AIRFRY
   </div>
-  <div class="col-span-1 prose-sm prose-blue my-4">
+  <div class="col-span-1 prose-sm prose-blue my-2">
     <% pages.forEach(item=>{ %>
-    <div class="mr-2 my-2 flex flex-row">
+    <div class="mr-2 my-0 flex flex-row">
       <% if (pagePath == "/docs/"+item.url ) { %>
       <div class="font-bold"><%= item.title %></div>
       <% } else { %>
@@ -27,6 +27,11 @@ docsDir: md
     <%- html %>
     <% } %>
   </div>
+  <% if (locals.upNextTitle) { %>
+  <div class="col-span-5 bg-blue-600 rounded-lg text-white px-4 py-1 mb-4 font-black">
+    Up Next: <%= upNextTitle %>
+  </div>
+  <% } %>
 </div>
 
 <script entry>

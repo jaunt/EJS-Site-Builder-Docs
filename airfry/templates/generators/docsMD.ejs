@@ -1,5 +1,12 @@
 <script generate>
-  var md = require('markdown-it')().use(require('markdown-it-highlightjs'));
+  let upNext = ""
+
+  var md = require('markdown-it')().use(require('markdown-it-highlightjs')).use(require('markdown-it-custom-block'), {
+    upNext(arg) {
+      upNext = arg
+      return ""
+    },
+  });
   const path = require("path");
   let docs;
 
@@ -23,6 +30,7 @@
   let mapped = docs.map((filepath) => {
     const raw = fs.readFileSync(filepath, "utf8");
     const content = frontMatterParse(raw);
+    upNext = ""
     const html = md.render(content.body);
     const title = content.attributes.title;
     const order = content.attributes.order;
@@ -37,6 +45,7 @@
         title: title,
         html: html,
         order: order,
+        upNext: upNext.replace(/^\/+|\/+$/g, ''),
       },
     };
   });
@@ -50,7 +59,7 @@
     // the toc from cache and update it
     toc = cache["toc"].data
     const index = toc.findIndex((item) => {
-      return item.path == page.path;
+      return item.url == page.path;
     })
     let update = {
       url: page.path,
@@ -65,7 +74,6 @@
     }
   } else {
     // a full update rebuilds the table of contents
-
     toc = mapped.map(item => {
       return {
         url: item.path,
@@ -79,18 +87,25 @@
     return a.order - b.order
   })
 
-
-  console.log(toc)
-
   // store the toc in cache
   cache["toc"] = {
     data: toc,
   }
 
   // add table of contents to every page
-  mapped = mapped.map(item => {
-    item.data.pages = toc;
-    return item
+  mapped = mapped.map(page => {
+    if (page.data.upNext) {
+      console.log(page.data.upNext)
+      const index = toc.findIndex((item) => {
+        return item.url == page.data.upNext;
+      })
+      console.log(index)
+      if (index != -1) {
+        page.data.upNextTitle = toc[index].title;
+      }
+    }
+    page.data.pages = toc;
+    return page
   });
 
   generate(mapped);

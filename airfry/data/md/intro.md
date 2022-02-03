@@ -5,53 +5,176 @@ order: 1
 
 # Introduction
 
-Airfry is static site generator featuring **effecient dependecy tracking** baked-in from the ground up for super-fast change updates even on massive sites. It's **near zero-config** staying out of your way as much as possible. It has **an opinionanted workflow** based on decades of software engineering experience.
+_What's awesome about Airfry?_
 
-Airfry is designed to integrate with modern tools like [vite](/docs/integration/vite) in order to make awesome progressivly enhanced websites with awesome interactivity that can still score triple 100s on lighthouse, and produce awesome SEO results. Of course if you have an unhealthy fear of having any javascript on your webpages whatsoever (you know who you are), Airfry will not try to talk you out of it.
+It has **effecient dependecy tracking** baked-in from the ground up, giving you super-fast change updates, even on massive sites with thousands of pages.
 
-## Concepts
+It's **powered by your javascript**. There is no configuration file to balloon out of control. It does not offer "yet another plug-in architecture" because we already have NPM for that. If you love javascript, you'll be right at home.
 
-In order to use Airfry effectively, you need to understand two things. The fundamentals of **javascript**, and the basics of html **templating**.
+It's **minimal** by design. It doesn't pollute itself with half-baked semi-useful blogging features. It's written in typescript, is under 2000 lines of code, and will always be kept as simple as possible.
 
-## Workflow
+It has a logical **opinionanted workflow** based on decades of software engineering experience. It helps you make the right decisions early on so you don't end up with something unmanagable down the road.
 
-In the course of generating your site, Airfry goes through three phases:
+It **integrates with modern tools** like [vite](/docs/integration/vite) in order to make awesome progressivly enhanced websites. Yes, you can score triple 100s on lighthouse and produce awesome SEO results, and not be judged for wanting a little javascript on your pages.
 
-1. Pre Generation
-2. Page Generation
-3. Post Generation
+## Quick Start
 
-Each of these phases have hooks where you write javascript and provide templates in order to manipulate and render the data your customers ultimately experience on your website.
+- Create an empty [vite](https://vitejs.dev/guide/) project using its vanilla template.
 
-### Pre Generation
+```bash
+npm init vite@latest paint-with-airfry --template vanilla
+cd paint-with-airfry
+npm install
+```
 
-The [PreGenerate Hook](/docs/templates/preGenerate/) lets you call APIs or run javascript calculations to build up data that might be useful on all your pages.
+- Install airfry
 
-For example, perhaps you call a headless wordpress API to download and your blog data. You
-might use javascript to massage the data, order it, tag it, convert it, etc.
-
-Or more simply you might want to get a version from your git tags to pass to all pages. If you need data that will likely be used across multiple pages, the pre generation hook is the place to create it.
-
-## Page Generation
-
-Airfry runs through all your [templates](/docs/templates/templates/), each one generating one or [more](/docs/templates/pagesFromData/) rendered pages.
-
-Each template can have it's own javascript called a [generate script](/docs/templates/generateScript/). Generate scripts used primarily when you want to spit out multiple pages using the same template. For example if you could write a template to render blog post and feed through the data you pull down from your headless api.
-
-Templates have access to anything you supplied from the [PreGenerate Hook](/docs/templates/preGenerate/), [front matter data](/docs/templates/frontmatter/), and and data pased from [generate scripts](/docs/templates/generateScript/).
-
-## Post Generation
-
-The [PostGenerate Hook](/docs/templates/postGenerate/) lets you use javascript to summarize everything that was written for any purposes you might need.
-
-For example, perhaps you want to write out a json data structure with links to all the page that were generated.
-
-## Install
-
-### Global
-
-npm add @danglingdev/airfry -g
-
-### Project
-
+```bash
 npm add @danglingdev/airfry
+```
+
+- Create an airfry directory where all the "ingredients" go, and a src directory where vite will serve your site from:
+
+```bash
+mkdir airfry
+mkdir src
+```
+
+- Create vite.config.js
+
+```bash
+touch vite.config.js
+```
+
+- Point vite root to the new src directory. Add the following to vite.config.js:
+
+**vite.config.js**
+
+```javascript
+// vite.config.js
+export default {
+  // config options
+  root: "./src",
+};
+```
+
+- Create some templates to render the site
+
+```bash
+mkdir -p airfry/templates
+touch airfry/templates/index.ejs
+touch airfry/templates/random.ejs
+```
+
+- Add some html, frontmatter, and template variables to index.ejs
+
+**index.ejs**
+
+```javascript
+---
+generate: /
+title: Crispy and healty
+---
+
+Title: <%= title %>
+<% for (let i=0; i<10; i++) {
+  const page = "page_" + i.toString() %>
+  <br />
+  <a href="/random/<%= page %>/"><%= page %></a>
+<% } %>
+```
+
+- Add some html, frontmatter, and a silly generate script to random.ejs
+
+**random.ejs**
+
+```html
+---
+generate: /random/*
+---
+
+Random: <%= title %>
+<br />
+<a href="/">home</a>
+
+<script generate>
+  const pages = 10;
+  let toRender = pages;
+  for (let i = 0; i < pages; i++) {
+    const num = Math.floor(Math.random() * 100);
+    setTimeout(() => {
+      generate({
+        path: "page_" + i.toString(),
+        data: {
+          title: num.toString(),
+        },
+      });
+      toRender--;
+      if (toRender == 0) {
+        resolve();
+      }
+    }, num);
+  }
+</script>
+```
+
+- Install concurrently to be able to trigger airfry and vite concurrently:
+
+```bash
+npm install concurrently
+```
+
+- Update package.json to be able to trigger airfry
+
+**package.json**
+
+```bash
+... snip ...
+  "scripts": {
+    "airfry": "npx airfry --noWatch",
+    "serve": "concurrently --kill-others \"npx airfry\" \"npm run dev\"",
+... snip ...
+```
+
+- Tell airfry where to find the templates and where to output the results
+
+```bash
+touch airfry.json
+```
+
+**airfry.json**
+
+```javascript
+{
+  "options": {
+    "input": "./airfry/templates",
+    "output": "./src"
+  }
+}
+```
+
+- Turn on the airfryer!
+
+```bash
+npm run serve
+```
+
+Vite should run very quickly and your new site should be ready to explore, probably at http://localhost:3000 but check the console output to be sure.
+
+If you make changes to your templates, your site should update quickly. When you are done, exit airfry && vite with ctrl-c from the console.
+
+### What happened?
+
+**index.ejs** is pretty simple. You can see how data from frontmatter gets rendered into the template.
+
+Important: Airfry uses [EJS](https://ejs.co/) for its primary template language because it allows us to use javascript everywhere. You may be wondering if Airfry supports other template languanges. Yes and no. If you have a bunch of existing content in some other template language, it's very easy to use it in your Airfry project.
+
+For example, these very docs are written in markdown.
+
+But if you want to take advantage of ultra efficient dependency tracking, recursive template wrapping, and all the other cool stuff Airfry does for you, you need to use EJS. Checkout the [FAQ](/docs/faq/) for more information.
+
+**random.ejs** is an obscure example of how Airfry gemerate scripts work. Generate scripts can be specified inline with your templates, and are responsible for doing something with data before sending it one or more times through your template. Generate scripts are asynchronous so you can take as long as you need, as demonstrated by the setTimeout call in our example. There are of course many other useful generate script features [available](docs/templates/generateScript/)
+
+### Next Step
+
+[In order to use Airfry effectively, you should read about its workflow...](/docs/workflow/)

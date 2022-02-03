@@ -9,7 +9,7 @@ One of the main reasons for the existence of Airfry in the first place was to ha
 
 Imagine a typical blog with a hundred pages while a post being made up of 5 nested sub-templates. If you make a tweak to one of the deeply nested sub templates, ideally only those pages depending on that sub template would be re-generated. This is what dependency tracking is for, and Airfry has been designed from the ground up to be good at it.
 
-Here are the ways Airfy tracks your dependencies.
+Here are the ways Airfry tracks your dependencies.
 
 ### Sub Templates
 
