@@ -1,7 +1,6 @@
 ---
 title: Setup
 order: 2
-upNext: /templates/templates/
 ---
 
 # Setup

@@ -1,5 +1,5 @@
 ---
-title: Batch Generation
+title: Making Pages
 order: 5
 ---
 
