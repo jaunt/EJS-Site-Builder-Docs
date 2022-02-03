@@ -1,5 +1,5 @@
 ---
-title: Calculated Template Variables
+title: Calculated Variables
 order: 7
 ---
 

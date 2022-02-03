@@ -1,12 +1,5 @@
 <script generate>
-  let upNext = ""
-
-  var md = require('markdown-it')().use(require('markdown-it-highlightjs')).use(require('markdown-it-custom-block'), {
-    upNext(arg) {
-      upNext = arg
-      return ""
-    },
-  });
+  var md = require('markdown-it')().use(require('markdown-it-highlightjs'));
   const path = require("path");
   let docs;
 
@@ -30,22 +23,26 @@
   let mapped = docs.map((filepath) => {
     const raw = fs.readFileSync(filepath, "utf8");
     const content = frontMatterParse(raw);
-    upNext = ""
     const html = md.render(content.body);
     const title = content.attributes.title;
     const order = content.attributes.order;
+    const upNext = content.attributes.upNext;
     // Use our data paths to specify output paths.
     // Data dir is the absolute path to our data dir
     // We also truncate the '.md' of path names.
     const relPath = filepath.split(dataDir + "/" +
       docsDir + "/")[1].slice(0, -3);
+
+    const group = relPath.split("/")[0]
+
     return {
       path: relPath,
       data: {
+        group: group,
         title: title,
         html: html,
         order: order,
-        upNext: upNext.replace(/^\/+|\/+$/g, ''),
+        upNext: upNext ? upNext.replace(/^\/+|\/+$/g, '') : "",
       },
     };
   });
@@ -64,7 +61,8 @@
     let update = {
       url: page.path,
       title: page.data.title,
-      order: page.order,
+      order: page.data.order,
+      group: page.data.group,
     }
     if (index == -1) {
       // must be a new page
@@ -79,6 +77,7 @@
         url: item.path,
         title: item.data.title,
         order: item.data.order,
+        group: item.data.group,
       }
     });
   }
@@ -95,11 +94,9 @@
   // add table of contents to every page
   mapped = mapped.map(page => {
     if (page.data.upNext) {
-      console.log(page.data.upNext)
       const index = toc.findIndex((item) => {
         return item.url == page.data.upNext;
       })
-      console.log(index)
       if (index != -1) {
         page.data.upNextTitle = toc[index].title;
       }

@@ -1,5 +1,5 @@
 ---
-title: Front Matter Page Variables
+title: Frontmatter Variables
 order: 6
 ---
 

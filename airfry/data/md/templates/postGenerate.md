@@ -1,5 +1,5 @@
 ---
-title: Post Generate Script
+title: Post Generate
 order: 10
 ---
 

@@ -1,4 +1,4 @@
 ---
-title: Progressive Enhancement with Alpine JS
+title: Alpine JS
 order: 16
 ---

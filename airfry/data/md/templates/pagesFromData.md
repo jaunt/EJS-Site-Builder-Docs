@@ -1,5 +1,5 @@
 ---
-title: Making Pages From Data
+title: Batch Generation
 order: 5
 ---
 

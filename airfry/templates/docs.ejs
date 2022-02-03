@@ -4,39 +4,67 @@ wrapper: wrappers/main
 docsDir: md
 ---
 
-<%# Show page %>
-<div class="grid grid-cols-5 w-full">
-  <div class="col-span-5 bg-blue-600 rounded-lg text-white px-4 py-1 mb-4 font-black">
-    AIRFRY
+<div class="relative h-screen md:flex">
+  <!-- mobile menu bar -->
+  <div class="bg-gray-800 text-gray-100 flex justify-between md:hidden">
+    <!-- logo -->
+    <a href="#" class="block p-4 text-white font-bold">AIRFRY</a>
+
+    <!-- mobile menu button -->
+    <button class="mobile-menu-button p-4 focus:outline-none focus:bg-gray-700">
+      <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
   </div>
-  <div class="col-span-1 prose-sm prose-blue my-2">
-    <% pages.forEach(item=>{ %>
-    <div class="mr-2 my-0 flex flex-row">
-      <% if (pagePath == "/docs/"+item.url ) { %>
-      <div class="font-bold"><%= item.title %></div>
-      <% } else { %>
-      <a href="/docs/<%= item.url %>/"><%= item.title %></a>
-      <% } %>
-    </div>
-    <% }); %>
+
+  <!-- sidebar -->
+  <div class="sidebar bg-blue-800 text-blue-100 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out overflow-y-auto px-6">
+
+    <!-- logo -->
+    <div class="text-xl font-black  pt-6 text-white">AIRFRY</div>
+
+
+    <!-- nav -->
+    <nav>
+      <%
+      let group = ""
+      pages.forEach(item=>{
+        if (group!=item.group) {
+          group=item.group
+          // output group heading
+      %>
+      <div class="mt-4 font-thin uppercase"><%= item.group %></div>
+      <%  }  %>
+      <%  if (pagePath == "/docs/"+item.url ) { %>
+      <a class="block py-1 rounded transition duration-200 hover:bg-blue-700 hover:text-white" href="/docs/<%= item.url %>/"><%= item.title %></a>
+      <%  } else { %>
+      <!-- content -->
+      <a class="block rounded transition duration-200 hover:bg-blue-700 hover:text-white" href="/docs/<%= item.url %>/"><%= item.title %></a>
+      <%  } %>
+
+      <%}); %>
+    </nav>
   </div>
-  <div class="col-span-3 prose prose-red m-auto py-8">
+
+  <!-- content -->
+  <div class="flex-1 prose prose-blue overflow-y-auto max-w-none px-16 py-8">
     <% if (!Boolean(html)) { %>
-    <span class="font-black">TODO</span>
+    <span class=" font-black">TODO</span>
     <% } else { %>
     <%- html %>
     <% } %>
   </div>
-  <% if (locals.upNextTitle) { %>
-  <div class="col-span-5 bg-blue-600 rounded-lg text-white px-4 py-1 mb-4 font-black">
-    Up Next: <%= upNextTitle %>
-  </div>
-  <% } %>
+
 </div>
 
-<script entry>
-  // this is a test
-</script>
+<% if (locals.upNextTitle) { %>
+<div class="fixed bottom-0 left-0 w-full bg-blue-600 text-white font-black pl-2">
+  Up Next: <%= upNextTitle %>
+</div>
+
+<% } %>
+
 
 <script generate-use:"generators/docsMD">
 </script>

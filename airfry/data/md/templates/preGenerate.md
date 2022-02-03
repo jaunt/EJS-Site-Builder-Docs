@@ -1,5 +1,5 @@
 ---
-title: Preparing Data For All Pages
+title: Pre Generate
 order: 9
 ---
 

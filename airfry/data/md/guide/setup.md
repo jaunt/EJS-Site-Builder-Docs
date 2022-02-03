@@ -1,6 +1,7 @@
 ---
 title: Setup
 order: 2
+upNext: /templates/templates/
 ---
 
 # Setup
@@ -76,5 +77,3 @@ Simply delete the cache directory at start.
 ## Verbose Logging
 
 Make logging noisier.
-
-@[upNext](/templates/templates/)
