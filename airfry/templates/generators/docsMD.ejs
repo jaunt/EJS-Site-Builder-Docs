@@ -91,20 +91,6 @@
     data: toc,
   }
 
-  // add table of contents to every page
-  mapped = mapped.map(page => {
-    if (page.data.upNext) {
-      const index = toc.findIndex((item) => {
-        return item.url == page.data.upNext;
-      })
-      if (index != -1) {
-        page.data.upNextTitle = toc[index].title;
-      }
-    }
-    page.data.pages = toc;
-    return page
-  });
-
   generate(mapped);
 
   resolve({
