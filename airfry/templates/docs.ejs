@@ -1,5 +1,5 @@
 ---
-generate: /docs/*
+generate: /*
 wrapper: wrappers/main
 docsDir: md
 ---
@@ -34,21 +34,20 @@ docsDir: md
           group=item.group
           // output group heading
       %>
-      <div class="mt-4 font-thin uppercase"><%= item.group %></div>
-      <%  }  %>
-      <%  if (pagePath == "/docs/"+item.url ) { %>
-      <a class="block py-1 rounded transition duration-200 hover:bg-blue-700 hover:text-white" href="/docs/<%= item.url %>/"><%= item.title %></a>
-      <%  } else { %>
-      <!-- content -->
+      <div class="after:content-['*'] after:ml-0.5 after:text-red-500 mt-4 font-thin uppercase"><%= item.group %></div>
+      <%
+        }
+        let pre = ""
+        if (pagePath == "/docs/"+item.url ) {
+          pre = "|"
+        }
+      %>
       <a class="block rounded transition duration-200 hover:bg-blue-700 hover:text-white" href="/docs/<%= item.url %>/"><%= item.title %></a>
-      <%  } %>
-
       <%}); %>
     </nav>
   </div>
 
-  <!-- content -->
-  <div class="flex-1 prose prose-blue overflow-y-auto max-w-none px-16 py-8">
+  <div class="flex-1 prose prose-a:text-blue-600 overflow-y-auto max-w-none px-16 py-8">
     <% if (!Boolean(html)) { %>
     <span class=" font-black">TODO</span>
     <% } else { %>
@@ -62,7 +61,6 @@ docsDir: md
 <div class="fixed bottom-0 left-0 w-full bg-blue-600 text-white font-black pl-2">
   Up Next: <%= upNextTitle %>
 </div>
-
 <% } %>
 
 

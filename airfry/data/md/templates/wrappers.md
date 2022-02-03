@@ -28,11 +28,6 @@ Here's an example of a template wrapper:
     <script type="module" src="<%- pagePath %>/<%- lastPath %>.js"></script>
   </body>
 </html>
-
-<script entry>
-  import "virtual:windi.css";
-  import "highlight.js/styles/atom-one-dark.css";
-</script>
 ```
 
 The include for **"\_body"** will be replaced the content generated from whichever template wrapped itself.
