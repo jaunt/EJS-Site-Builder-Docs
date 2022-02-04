@@ -37,7 +37,3 @@ Templates have access to anything you supplied from the [PreGenerate Hook](/docs
 The [PostGenerate Hook](/docs/templates/postGenerate/) may not be as useful for simple sites. It lets you use javascript to summarize everything that was written for any purposes you might need.
 
 For example, perhaps you want to write out a json data structure with links to all the page that were generated.
-
-### Next Step
-
-[There's almost nothing to confiure about Airfry except paths, but you should check out the options...](/docs/setup/)

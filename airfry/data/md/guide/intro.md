@@ -174,7 +174,3 @@ For example, these very docs are written in markdown.
 But if you want to take advantage of ultra efficient dependency tracking, recursive template wrapping, and all the other cool stuff Airfry does for you, you need to use EJS. Checkout the [FAQ](/docs/faq/) for more information.
 
 **random.ejs** is an obscure example of how Airfry gemerate scripts work. Generate scripts can be specified inline with your templates, and are responsible for doing something with data before sending it one or more times through your template. Generate scripts are asynchronous so you can take as long as you need, as demonstrated by the setTimeout call in our example. There are of course many other useful generate script features [available](docs/templates/generateScript/)
-
-### Next Step
-
-[In order to use Airfry effectively, you should read about its workflow...](/docs/workflow/)

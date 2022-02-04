@@ -3,4 +3,5 @@ export default {
   // config options
   root: "./src",
   plugins: [],
+  logLevel: "warn",
 };

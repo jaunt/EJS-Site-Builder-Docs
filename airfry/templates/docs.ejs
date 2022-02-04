@@ -36,10 +36,14 @@ docsDir: md
     <% } else { %>
     <%- html %>
     <% } %>
+    <div class="border border-1 w-full p-4 mt-8">
+      <div>
+        Up Next:
+        <span class="ml-2" id="next">
+        </span>
+      </div>
+    </div>
   </div>
-</div>
-
-<div id="prevNext" class="fixed bottom-0 left-0 w-full bg-blue-600 text-white font-black pl-2">
 </div>
 
 <script entry>
@@ -72,19 +76,14 @@ docsDir: md
         });
         nav.innerHTML = html;
         html = ""
-        let prev;
         let next;
-        if (current > 0) {
-          prev = json[current - 1]
-        }
         if (current < json.length - 1) {
           next = json[current + 1]
         }
-        if (prev || next) {
-          let prevNext = document.querySelector('#prevNext')
-          html += prev && `<a href="/${prev.url}/">${prev.title}</a>`
-          html += next && `<a href="/${next.url}/">${next.title}</a>`
-          prevNext.innerHTML = html;
+        let nextElement = document.querySelector('#next')
+        if (next) {
+          nextElement.innerHTML = `<a href="/${next.url}/">${next.title}</a>`
+          // nextElement.style.display = "block"
         }
       })
       .catch(error => {
