@@ -21,7 +21,7 @@ Airfry has very little to configure. You can pass the following options on the c
   -h, --help                display help for commands
 ```
 
-Alternativy, you can specify the above options in a file called **airfry.json**:
+Alternatively, you can specify the above options in a file called **airfry.json**:
 
 The defaults are shown here:
 

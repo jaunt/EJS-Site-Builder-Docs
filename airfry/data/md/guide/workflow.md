@@ -15,25 +15,26 @@ Each phase has hooks where you write javascript and provide templates in order t
 
 ### Pre Generation
 
-The [PreGenerate Hook](/docs/templates/preGenerate/) lets you call APIs or run javascript calculations to build up data that might be useful on all your pages.
+The [PreGenerate Hook](/docs/templates/preGenerate/) is your first chance to load and massage data that you'll use to render your pages. You might read files or pull data from your APIs before getting it ready for all of your pages.
 
-For example, perhaps you call a headless wordpress API to download and your blog data. You
-might use javascript to massage the data, order it, tag it, convert it, cache it, etc.
+For example, perhaps you call a headless wordpress API to download blog data. You'd likely write simple javascript to parse the data, order it, tag it, convert it, cache it, etc.
 
-Or more simply you might want to get a version from your git tags to pass to all pages. If you need data that will likely be used across multiple pages, the pre generation hook is the place to create it.
+Or consider the simple case where you want to use the version from your latest git tag to pass to all pages.
 
-For data that you only need on a single page (or group of pages generated from a single template), you can use page generation hooks:
+If you need data that will likely be used across multiple pages, the pre generation hook is the place to fetch and prepare it.
+
+For data that you only need on a single page (or group of pages generated from a single template), you can do so in the page generation phase.
 
 ## Page Generation
 
 Airfry runs through all your [templates](/docs/templates/templates/), each one generating one or [more](/docs/templates/pagesFromData/) rendered pages.
 
-Each template can have it's own javascript called a [generate script](/docs/templates/generateScript/). Generate scripts are used primarily when you want to spit out multiple pages using the same template. For example, you could write a template to render blog post have its generate script feed through the data you pull down from your headless api.
+Each template can have its own hook called a [generate script](/docs/templates/generateScript/). Generate scripts are used primarily when you want to spit out multiple pages using the same template. For example, you could write a template to render blog post have its generate script feed through the data you pull down from your headless api.
 
-Templates have access to anything you supplied from the [PreGenerate Hook](/docs/templates/preGenerate/), [front matter data](/docs/templates/frontmatter/), and of course the data pased from [generate scripts](/docs/templates/generateScript/).
+Templates have access to anything you supply from the [PreGenerate Hook](/docs/templates/preGenerate/), [front matter data](/docs/templates/frontmatter/), and of course the pased from [generate scripts](/docs/templates/generateScript/).
 
 ## Post Generation
 
-The [PostGenerate Hook](/docs/templates/postGenerate/) may not be as useful for simple sites. It lets you use javascript to summarize everything that was written for any purposes you might need.
+The [PostGenerate Hook](/docs/templates/postGenerate/) may not be as useful for simple sites. Its a hook where you recieve data from Airfry regarding everything that was written, for any purposes you might need.
 
-For example, perhaps you want to write out a json data structure with links to all the page that were generated.
+For example, perhaps you want to write out a json data structure with links to all the page that were generated to create a site manifest or to auto compute multi page app entry points for [vite integration](/docs/integration/vite).

@@ -8,7 +8,7 @@ docsDir: md
   <!-- mobile menu bar -->
   <div class="bg-gray-800 text-gray-100 flex justify-between md:hidden">
     <!-- logo -->
-    <a href="#" class="block p-4 text-white font-bold">AIRFRY</a>
+    <div class="text-xl font-black p-4 text-white">AIRFRY.JS</div>
 
     <!-- mobile menu button -->
     <button class="mobile-menu-button p-4 focus:outline-none focus:bg-gray-700">
@@ -19,10 +19,10 @@ docsDir: md
   </div>
 
   <!-- sidebar -->
-  <div class="sidebar bg-blue-800 text-blue-100 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out overflow-y-auto px-6">
+  <div class="sidebar bg-gray-700 text-blue-100 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out overflow-y-auto px-6 pt-6">
 
     <!-- logo -->
-    <div class="text-xl font-black  pt-6 text-white">AIRFRY.JS</div>
+    <a href="/" class="text-xl font-black text-white">AIRFRY.JS</a>
 
     <!-- nav -->
     <nav id="nav">
@@ -30,7 +30,7 @@ docsDir: md
     </nav>
   </div>
 
-  <div class="flex-1 prose prose-a:text-blue-600 overflow-y-auto max-w-none px-16 py-8">
+  <div class="flex-1 prose prose-a:text-blue-600 overflow-y-auto max-w-none px-8 py-8">
     <% if (!Boolean(html)) { %>
     <span class="font-black">TODO</span>
     <% } else { %>

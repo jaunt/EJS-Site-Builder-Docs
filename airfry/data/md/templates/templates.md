@@ -11,7 +11,7 @@ If you know any javascript at all, you're in good shape, and if you don't, it's 
 
 The first step is to read the [tags section](https://ejs.co/#tags) of the docs provided by EJS.
 
-_You don't need to focus too much on other EJS documentation like options, CLI, caching, custom file loader, or client-side support, as Airfry takes care of those things._
+_**Important**: You probably shouldn't worry about or use EJS features including its options, CLI, caching, custom file loader, or client-side support, as Airfry takes care of those things._
 
 After that, just look at examples and you'll learn quickly.
 

@@ -22,13 +22,11 @@ Airfry is a javascript site generator. It wants you do live and breath javascrip
 
 Yes. Airfry leaves it up to you to parse your own data files and pass them to your EJS templates using your [generate scripts](/docs/templates/generateScript/).
 
-It's very easy to parse markdown in this way. See the generate script used to make these Airfry Docs how it uses the awesome [markdown-it](https://github.com/markdown-it/markdown-it) npm module to parse markdown files:
+It's very easy to parse markdown in this way. Have a look at the generate script used to make these Airfry Docs. See how it uses the awesome [markdown-it](https://github.com/markdown-it/markdown-it) module to parse markdown files:
 
-[docsMD.ejs](https://github.com/jaunt/airfryDocs/blob/main/airfry/templates/generators/docsMD.ejs).
+[docsMD.ejs](https://github.com/jaunt/airfryDocs/blob/main/airfry/templates/generators/docsMD.ejs)
 
 The sky is the limit. For example, if you wanted to create "sections" in your markdown files that rendered to different sections of your templates, you could use markdown-it [custom containers](https://github.com/markdown-it/markdown-it-container) and pass what you receive into your template variables.
-
-The [Airfry Gallery](/docs/gallery/) may have interesting example for you to get started with.
 
 ### Does Airfry support other Templating Languages?
 

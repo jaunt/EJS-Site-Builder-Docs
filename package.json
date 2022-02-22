@@ -31,7 +31,7 @@
     "vite": "^2.7.2"
   },
   "dependencies": {
-    "@danglingdev/airfry": "^0.0.13",
+    "@danglingdev/airfry": "^0.0.16",
     "markdown-it": "^12.3.2",
     "markdown-it-highlightjs": "^3.6.0"
   }
