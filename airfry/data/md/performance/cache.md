@@ -9,8 +9,8 @@ It's likely you might be working on your site for hours at a time. If your site 
 
 Generate scripts have access to "cache", which is a simple javascript object.
 
-The cache keys are the names of the cache entries and must be unique to the template.
-The cache key values are the data that was cached.
+The cache keys are the names of the cache entries and must be unique to your project.
+The cache values are the data that was cached.
 
 The usage pattern in your generate scripts is recommended as follows:
 

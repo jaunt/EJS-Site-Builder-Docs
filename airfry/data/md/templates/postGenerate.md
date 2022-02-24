@@ -15,6 +15,7 @@ Your postGenerate.js script will have access to a javascript object called "outp
 type FilesWritten = {
   source: string;
   path: string;
+  time: string;
 };
 
 type OutputData = {

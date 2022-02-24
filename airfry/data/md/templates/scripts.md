@@ -5,15 +5,15 @@ order: 4
 
 # Airfry Scripting Basics
 
-Airfry lets you embed scripts right in your templates. This is inspired by, but a little different than what you see in [vue.js single file templates](https://vuejs.org/v2/guide/single-file-components.html)
+Airfry lets you embed scripts right in your templates. This is inspired by, but a little different than what you see in vue.js single file templates.
 
-You should consider scripts in two categories.
+There are two kinds of Airfry scripts. Generate scripts for generating your site, and runtime scripts for running it.
 
 ## Site Generation Scripts
 
-When you want to create html pages based on data, you write javascript which Airfry runs through as it builds your site. These are called generate scripts.
+When you want to create html pages based on data, you can write javascript which Airfry runs as it builds your site. These are called generate scripts.
 
-Airfry treats generate scripts like they are the body of a [javascript promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). You probably don't need to know about promises in detail to use Airfry. Just understand that you can do what ever you want asynchronously, and when you are done, call 'resolve' with the page generation requests and related data, or 'reject' with an error. Find out more details in the [generate script](/docs/templates/generateScript/) documentation.
+Airfry treats generate scripts like they are the body of a [javascript promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). You probably don't need to know about promises in detail to use Airfry. Just understand that you can do what ever you want asynchronously, and when you are done, call 'resolve' or 'reject' with an error. Find out more details in the [generate script](/docs/templates/generateScript/) documentation.
 
 #### Embedding in Templates
 
@@ -71,7 +71,7 @@ generate: /
 </script>
 ```
 
-The above template is being rendered directly to root, because the generate path is '/'. This is a special case in which Airfry will copy the entry script you specify into a file called "main.js" alongside index.html in the root of your [output directory](/docs/setup/).
+The above template is being rendered directly to root, because the generate path is '/'. This is a special case in which Airfry will copy the entry script you specify into a file called "main.js" alongside index.html in the root of your [output directory](/guide/setup/).
 
 If you specify an entry script in a template that is being rendered to a page that is not at root, for example:
 

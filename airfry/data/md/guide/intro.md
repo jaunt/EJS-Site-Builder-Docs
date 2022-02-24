@@ -7,23 +7,23 @@ order: 1
 
 _What's awesome about Airfry?_
 
-It has **effecient dependecy tracking** baked-in from the ground up, giving you super-fast change updates, even on massive sites with thousands of pages.
+**Effecient dependecy tracking** baked-in from the ground up, giving you super-fast change updates, even on massive sites with thousands of pages.
 
-It's **powered by your javascript**. There is no configuration file to balloon out of control. It does not offer "yet another plug-in architecture" because we already have NPM for that. If you love javascript, you'll be right at home.
+**Powered by your javascript**. There's no configuration file to balloon out of control. Airfry doesn't offer "yet another plug-in architecture" because we already have NPM for that. If you love javascript, you'll be right at home.
 
-It's **minimal** by design. It doesn't pollute itself with half-baked semi-useful blogging features. It's written in typescript, is under 2000 lines of code, and will always be kept as simple as possible.
+**Minimal** by design. It doesn't pollute itself with half-baked semi-useful blogging features that are never quite enough. It's written in typescript, is under 2000 lines of code, and will always be kept as simple as possible.
 
-It has a logical **opinionanted workflow** based on decades of software engineering experience. It helps you make the right decisions early on so you don't end up with something unmanagable down the road.
+**Logical and opinionanted workflow** based on decades of software engineering experience. It helps you make the right decisions early on so you don't end up with something unmanagable down the road.
 
-It **integrates with modern tools** like [vite](/docs/integration/vite) in order to make awesome progressivly enhanced websites. Yes, you can score triple 100s on lighthouse and produce awesome SEO results, and not be judged for wanting a little javascript on your pages.
+**Integrates with modern tools** like [vite](/docs/integration/vite) in order to make awesome progressivly enhanced websites. Yes, you can score triple 100s on lighthouse and produce awesome SEO results, and not be judged for wanting a little javascript on your pages.
 
 ## Quick Start
 
 - Create an empty [vite](https://vitejs.dev/guide/) project using its vanilla template.
 
 ```bash
-npm init vite@latest paint-with-airfry --template vanilla
-cd paint-with-airfry
+npm init vite@latest airfryStarter --template vanilla
+cd airfryStarter
 npm install
 ```
 
@@ -161,7 +161,7 @@ npm run serve
 
 Vite should run very quickly and your new site should be ready to explore, probably at http://localhost:3000 but check the console output to be sure.
 
-If you make changes to your templates, your site should update quickly. When you are done, exit airfry && vite with ctrl-c from the console.
+If you make changes to your templates, your site should update quickly. When you are done, exit airfry and vite with ctrl-c from the console.
 
 ### What happened?
 
@@ -171,6 +171,6 @@ Important: Airfry uses [EJS](https://ejs.co/) for its primary template language 
 
 For example, these very docs are written in markdown.
 
-But if you want to take advantage of ultra efficient dependency tracking, recursive template wrapping, and all the other cool stuff Airfry does for you, you need to use EJS. Checkout the [FAQ](/docs/faq/) for more information.
+But if you want to take advantage of ultra efficient dependency tracking, recursive template wrapping, and all the other cool stuff Airfry does for you, you need to use EJS. Checkout the [FAQ](/guide/faq/) for more information.
 
-**random.ejs** is an obscure example of how Airfry gemerate scripts work. Generate scripts can be specified inline with your templates, and are responsible for doing something with data before sending it one or more times through your template. Generate scripts are asynchronous so you can take as long as you need, as demonstrated by the setTimeout call in our example. There are of course many other useful generate script features [available](docs/templates/generateScript/)
+**random.ejs** is an obscure example of how Airfry generate scripts work. Generate scripts can be specified inline with your templates, and are responsible for doing something with data before sending it one or more times through your template. Generate scripts are asynchronous so you can take as long as you need, as demonstrated by the setTimeout call in our example. There are of course many other useful generate script features [available](docs/templates/generateScript/).

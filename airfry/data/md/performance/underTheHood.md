@@ -31,7 +31,7 @@ You can follow the typescript issue [here](https://github.com/microsoft/TypeScri
 
 ### Source Code Stats
 
-Airfry is around 1500 lines of typescript code.
+Airfry is around 2000 lines of typescript code.
 
 ### Dependencies
 
@@ -50,7 +50,7 @@ Here are the NPM modules Airfry depends on:
 
 #### Run Time Dependencies
 
-- chalk (colorful console logging)
+- @danglingdev/shared-ts (super basic typescript helpers)
 - chokidar (monitoring the filesystem for changes)
 - commander (CLI interface)
 - front-matter (parsing front matter)
@@ -58,3 +58,4 @@ Here are the NPM modules Airfry depends on:
 - ejs (ejs templating)
 - micromatch (glob pattern matching)
 - nconf (reading configuration files)
+- picocolors (colorful console logging)

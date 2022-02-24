@@ -36,7 +36,11 @@ Yes, but not as first class citizens. See the question above regarding Markdown.
 
 It's highly recommended that you only use other templating languages out of necessity, like if you have thousands of existing template content files that you want to render with Airfry.
 
-EJS has a massive advantage that it is natively supported by Airfry, works with Airfry's [built-in dependency tracking](/docs/performance/dependencyTracking/), is fast, simple, and lets you write all your site generation logic in javascript, instead of switching back and forth between other template languages.
+EJS has a massive advantage that it is natively supported by Airfry, works with Airfry's [built-in dependency tracking](/performance/dependencyTracking/), is fast, simple, and lets you write all your site generation logic in javascript, instead of switching back and forth between other template languages.
+
+### Can I make shortcodes and filters?
+
+See [shortcodes](/guide/shortcodes/) for details.
 
 ### How is the Airfry source code tested?
 

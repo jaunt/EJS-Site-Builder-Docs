@@ -1,5 +1,5 @@
 ---
-title: Generating Scripts
+title: Generate Scripts
 order: 8
 ---
 
@@ -19,20 +19,21 @@ Allows you to import node.js compatible npm modules that you have added to your 
 
 ### resolve
 
-Call with the result of your script. See below for data you can pass when your script resolves.
+Call this function when your script is complete. See below for data you can pass when your script resolves.
 
 ### reject
 
-Call with a failure message if something goes wrong.
+Call to cancel page generation, usually with a failure message to help you debug when something goes wrong. The error will be logged.
+
+### generate
+
+Call the generate function one ore more times as your page data becomes ready to render. See [page generation requests](#pageGenerationRequests) for details. You can generate with an array of page requests or for a single page, one at a time. If you're rendering thousands of pages, it might be better to do it in chunks so that you don't use too much RAM, but you can also call this with all your pages at once.
 
 ### inputs
 
 - **triggeredBy**: If the script is being called because an individual data file changed, this will be set to the path of the file so that you can proceed to render only that file.
 - **frontMatter**: Allows you access to the template's front matter data.
-
-### global
-
-If you create data in your [pre generate script](/docs/templates/preGenerate/) it will be accessible here.
+- **global**: If you create data in your [pre generate script](/docs/templates/preGenerate/) it will be accessible here.
 
 ### getDataFileNames
 
@@ -60,14 +61,13 @@ The absolute path for your data directory in case you need it for any reason.
 
 - **cache**: Data that you want to update or add to the cache. See [caching](/docs/performance/cache/) for details.
 - **siteFiles**: An object which creates output files wrt your output directory. The keys are the file names and the values will be stringified with _JSON.stringify_ and written to the key specified path.
-- **generate**: An array of [page generation requests](#pageGenerationRequests).
 - **watchFiles**: request watching for changes to these files, Airfry will call this script with inputs.TriggeredBy set to the file path that change.
 - **watchGlobs**: Tell Airfry to watch glob patterns and if they change, call this script with inputs.TriggerBy set to the path that changed.
 - **outData**: Output data for all generate scripts will be collected and passed to your postGenerate script if it exists. See [post generate](/docs/templates/postGenerate/) for details.
 
 ## Page Generation Request Array
 
-When your generate script resolves, you should return a list of pages and data to run through the template. Simply return an array of objects with properites path & data.
+You can call the generate function as many times as you want before your generate script resolves. You can call it with a single page request, or an array of them. A page generation request is an object with the following properties:
 
 - **path**: The sub path to generate the template, which will replace the '\*' in your generate script path.
 - **data**: The data to supply to the template to be used as page variables.
@@ -81,8 +81,7 @@ generate: posts/*
 <%= description %>
 
 <script generate>
-resolve(
-  [
+generate([
     {
       path: "first",
       data: {
@@ -95,7 +94,10 @@ resolve(
         description: "second post",
       }
     },
-  ])
+])
+
+resolve()
+
 ```
 
 The above template will generate two posts:
@@ -147,16 +149,16 @@ The above template will generate two posts:
     };
   });
 
+  generate(mapped);
+
   resolve({
     siteFiles: {
-      ["README.md"]: "*This will get generated!*",
+      ["README.md"]: "*This file will get generated at your site root!*",
     },
     postData: {
       someData: "This will be passed to your post generate script.",
       otherData: "This will also be passed to your post generate script.",
     },
-    // the list of pages to generate through this template:
-    generate: mapped,
     // Tell airfry which data files to watch.
     // If they change after the initial render, this generate script
     // will be called with "inputs.triggeredBy" set to the file that changed.

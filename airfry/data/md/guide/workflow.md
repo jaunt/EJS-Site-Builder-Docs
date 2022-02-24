@@ -29,12 +29,14 @@ For data that you only need on a single page (or group of pages generated from a
 
 Airfry runs through all your [templates](/docs/templates/templates/), each one generating one or [more](/docs/templates/pagesFromData/) rendered pages.
 
-Each template can have its own hook called a [generate script](/docs/templates/generateScript/). Generate scripts are used primarily when you want to spit out multiple pages using the same template. For example, you could write a template to render blog post have its generate script feed through the data you pull down from your headless api.
+Each template can have its own hook called a [generate script](/docs/templates/generateScript/). Generate scripts are used primarily when you want to spit out multiple pages using the same template.
+
+For example, you could write a template to render a blog post with a consistent style and layout, with a generate script that feeds the data you pull down from your headless api through the template for each post.
 
 Templates have access to anything you supply from the [PreGenerate Hook](/docs/templates/preGenerate/), [front matter data](/docs/templates/frontmatter/), and of course the pased from [generate scripts](/docs/templates/generateScript/).
 
 ## Post Generation
 
-The [PostGenerate Hook](/docs/templates/postGenerate/) may not be as useful for simple sites. Its a hook where you recieve data from Airfry regarding everything that was written, for any purposes you might need.
+The [PostGenerate Hook](/docs/templates/postGenerate/) can be very useful, but you may not need it at first. It's a hook where Airfry sends you information regarding everything that was written by Airfry to your file system while generating your site, for any purposes you might need.
 
-For example, perhaps you want to write out a json data structure with links to all the page that were generated to create a site manifest or to auto compute multi page app entry points for [vite integration](/docs/integration/vite).
+For example, perhaps you want to write out a json data structure with links to all the page that were generated to create a site manifest, or perhaps to format the MPA entry points for the [vite configuration file](/docs/integration/vite) for production builds.
