@@ -36,6 +36,24 @@ Check out my youtube video!
 
 ## Markdown Shortcodes
 
-If you're using markdown-it to render markdown files, you could use a markdown-it plugin like [markdown-it-container](https://github.com/markdown-it/markdown-it-container).
+If you're using markdown-it to render markdown files, you can use the markdown-it-container plugin to render airfry templates adhoc in your markdown files.
 
-You'd need to install the plugin in your project, and require it in your generate script.
+First use your airfry template name for the container name, and the content as json with the data your template needs to render. Example:
+
+```md
+Check out this embedded youtube video:
+
+::: shortcode/youtube
+{ id: "srn5Cd9yR3Y" }
+:::
+
+Thanks for watching!
+```
+
+Next, make sure you have installed markdown-it in your project and then install the markdown-it-container plugin.
+
+Here is an example of a shortcode used by the airfry code which generated this website. Check out the sourcecode which uses the same mthod mentioned above. [docsMD.ejs](https://github.com/jaunt/airfryDocs/blob/main/airfry/templates/generators/docsMD.ejs)
+
+:::airfry shortcode/infoBox
+{ "title": "notice", "description": "this is cool" }
+:::

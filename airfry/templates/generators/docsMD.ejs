@@ -20,6 +20,20 @@
     }
   }
 
+  const markdownitfence = require('markdown-it-fence')
+
+  function yourPlugin(md, options) {
+    return markdownitfence(md, "airfry", {
+      marker: ":",
+      render: (tokens, idx, options, env, self) => {
+        const template = tokens[idx].info.trim().split(" ")[1]
+        const data = JSON.parse(tokens[idx].content.trim())
+        return renderTemplate(template, data)
+      },
+    })
+  }
+  md.use(yourPlugin)
+
   let mapped = docs.map((filepath) => {
     const raw = fs.readFileSync(filepath, "utf8");
     const content = frontMatterParse(raw);
