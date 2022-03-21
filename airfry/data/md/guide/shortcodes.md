@@ -11,7 +11,7 @@ Airfry lets you live, eat, and breath javascript. Hence the way you accomplish "
 
 ## Youtube Example
 
-Let's say you wanted a shortcode for a youtube video.
+Let's say you wanted a shortcode for a youtube video. First you save this somewhere in your airfry/templates folder:
 
 **youtube.ejs**
 
@@ -27,6 +27,8 @@ Let's say you wanted a shortcode for a youtube video.
 ></iframe>
 ```
 
+Then in a md file where you want to embed a youtube video, you would simply include it like so:
+
 **post.ejs**
 
 ```javascript
@@ -36,24 +38,78 @@ Check out my youtube video!
 
 ## Markdown Shortcodes
 
-If you're using markdown-it to render markdown files, you can use the markdown-it-container plugin to render airfry templates adhoc in your markdown files.
+If you're using markdown-it to render markdown files which is highly recommended, you can use the [markdown-it-fence](https://github.com/geekplux/markdown-it-fence) plugin to help render airfry templates adhoc in your markdown files.
 
-First use your airfry template name for the container name, and the content as json with the data your template needs to render. Example:
+The idea is use your airfry template name for the fence name, and the content as JSON with the data your template needs to render. Example:
+
+**Markdown:**
 
 ```md
 Check out this embedded youtube video:
 
-::: shortcode/youtube
+::airfry shortcode/youtube
 { id: "srn5Cd9yR3Y" }
 :::
 
 Thanks for watching!
 ```
 
-Next, make sure you have installed markdown-it in your project and then install the markdown-it-container plugin.
+Next, make sure you have installed markdown-it and markdown-it-fence in your project. Then you can write a function which takes the JSON string supplied in your md fence, and feeds it to the airfry function **renderTemplate** which Airfry makes available to your template. See details about [renderTemplate here](/templates/generateScript/)
 
-Here is an example of a shortcode used by the airfry code which generated this website. Check out the sourcecode which uses the same mthod mentioned above. [docsMD.ejs](https://github.com/jaunt/airfryDocs/blob/main/airfry/templates/generators/docsMD.ejs)
+Next we'll demonstrate an example of a shortcode used by the airfry code which generated these docs. Check out the sourcecode which uses the same mthod mentioned above. [docsMD.ejs](https://github.com/jaunt/airfryDocs/blob/main/airfry/templates/generators/docsMD.ejs)
+
+The important bit of the generate script you would use to render md files which uses the markdown-it-fence pluging looks like this
+
+```js
+function yourPlugin(md, options) {
+  return markdownitfence(md, "airfry", {
+    marker: ":",
+    render: (tokens, idx, options, env, self) => {
+      const template = tokens[idx].info.trim().split(" ")[1];
+      const data = JSON.parse(tokens[idx].content.trim());
+      return renderTemplate(template, data);
+    },
+  });
+}
+md.use(yourPlugin);
+```
+
+The md source code for the this page (the one you are reading now) can be seen here [shortcodes.md](https://github.com/jaunt/airfryDocs/blob/main/airfry/data/md/guide/shortcodes.md) Take a look at it. You will see after this text that it specifies a shortcode just like this:
+
+```md
+:::airfry shortcode/infoBox
+{ "title": "notice", "description": "this is cool" }
+:::
+```
+
+The above shortcode tells airfry to render the data you pass between the fences into the template you specify. Use JSON to specify your template variables. The result, based on the useless short code from these docs is as follows:
 
 :::airfry shortcode/infoBox
 { "title": "notice", "description": "this is cool" }
+:::
+
+You can take a look at the very useless and for demonstration purposes shortcode/infobox here: [infoBox.ejs](https://github.com/jaunt/airfryDocs/blob/main/airfry/templates/shortcode/infoBox.ejs)
+
+It simply renders title and description like so:
+
+```html
+<div
+  class="bg-green-200 border-2 border-green-600 rounded-md text-green-800 pl-4 py-2"
+>
+  <%= title %> - <%= description %>
+</div>
+```
+
+Here's a live example of rendering the youtube video shortcode from MD. If you look at the bottom of [shortcodes.md](https://github.com/jaunt/airfryDocs/blob/main/airfry/data/md/guide/shortcodes.md), which describes the page you are reading now, you will see this
+
+```md
+:::airfry shortcode/youtube
+{ "id": "srn5Cd9yR3Y" }
+:::
+```
+
+...which renders this:
+
+:::airfry shortcode/youtube
+{ "id": "srn5Cd9yR3Y" }
 :::

@@ -53,6 +53,12 @@ Call to log info to the airfry console. This can be helpful when you want to deb
 
 Airfry passes an instance of [frontMatterParse](https://github.com/jxson/front-matter) to your generate scripts which you can use in case you want to use front matter in your data files. This is what's happening in the following example, but is entirely optional.
 
+### renderTemplate (template name, template data)
+
+Airfry allows you to render a template from within your generate script. Say you created a generate script to render some other kind of templating language, like markdown for example, but you also wanted to render your native Airfry templates as [shortcodes](/guide/shortcodes/).
+
+In that case, you could extract the data in your generate script and pass it to one of your Airfry templates. **renderTemplate** expects the name of your template as the first parameter, with relative paths, and a javascript object of key value pairs specifying the data to pass into the template. See examples on on the [shortcodes page](/guide/shortcodes/). Note that calls to this function will be dependency tracked so that changes to the templates you call will trigger your generate script to run again.
+
 ### dataDir
 
 The absolute path for your data directory in case you need it for any reason.
