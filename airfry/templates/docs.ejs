@@ -36,7 +36,7 @@ docsDir: md
     <% } else { %>
     <%- html %>
     <% } %>
-    <div class="border border-1 w-full p-4 mt-8">
+    <div id="showNext" class="border border-1 w-full p-4 mt-8 hidden">
       <div>
         Up Next:
         <span class="ml-2" id="next">
@@ -81,9 +81,10 @@ docsDir: md
           next = json[current + 1]
         }
         let nextElement = document.querySelector('#next')
+        let showNextElement = document.querySelector('#showNext')
         if (next) {
           nextElement.innerHTML = `<a href="/${next.url}/">${next.title}</a>`
-          // nextElement.style.display = "block"
+          showNextElement.style.display = "block"
         }
       })
       .catch(error => {
