@@ -19,7 +19,7 @@
     "airfry": "npx airfry --noWatch",
     "serve": "concurrently --kill-others \"npx airfry\" \"npm run dev\"",
     "dev": "vite",
-    "build": "vite build",
+    "build": "npx airfry -nw && vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
