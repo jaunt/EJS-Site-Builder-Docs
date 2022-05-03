@@ -17,7 +17,7 @@ After that, just look at examples and you'll learn quickly.
 
 #### Variable replacement
 
-Variables can come from [front matter](/docs/templates/frontmatte/), [preGenerate data](/docs/templates/preGenerate/), the template's [generate script](/docs/templates/generateScript/), or [data automatically provided by Airfry](/docs/templates/calculated/), or data passed via EJS to sub templates using "include".
+Variables can come from [front matter](/templates/frontmatte/), [preGenerate data](/templates/preGenerate/), the template's [generate script](/templates/generateScript/), or [data automatically provided by Airfry](/templates/calculated/), or data passed via EJS to sub templates using "include".
 
 ```html
 The title of this post is <%= title %>
@@ -33,7 +33,7 @@ Use EJS 'locals' to check, otherwise you'll get template error.
 
 #### Including a sub template and passing data to it.
 
-Airfry [auto dependency tracking](/docs/performance/dependencyTracking/)
+Airfry [auto dependency tracking](/performance/dependencyTracking/)
 will intelligently track any templates you include for changes, such that if you modify template
 that has been included in other templates, those templates will be updated selectively.
 
@@ -59,8 +59,8 @@ In the example above, Airfry will look for a tepmlate called **details.ejs** in 
 
 #### Wrappers
 
-See [template wrappers](/docs/templates/wrappers/) for details.
+See [template wrappers](/templates/wrappers/) for details.
 
 #### Generating multiple files from a single template.
 
-See [generate scripts](/docs/templates/generateScript/) for details.
+See [generate scripts](/templates/generateScript/) for details.

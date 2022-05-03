@@ -13,15 +13,15 @@ Here are the ways Airfry tracks your dependencies.
 
 ### Sub Templates
 
-When you "include" [teplates](/docs/templatess/templates/) in other templates using EJS include, Airfry takes note and builds a dependency tree. After Airfry builds your site and is left running in the background, it monitors your [template directory](/guide/setup#directories) and if it detects a change, rebuilds based on that dependency tree.
+When you "include" [teplates](/templatess/templates/) in other templates using EJS include, Airfry takes note and builds a dependency tree. After Airfry builds your site and is left running in the background, it monitors your [template directory](/guide/setup#directories) and if it detects a change, rebuilds based on that dependency tree.
 
 ### Generate Script Data
 
-In your [generate scripts](/docs/templates/generateScript/), you have the option of reading files from the [data directory](/guide/setup#directories) to use when generating multiple pages from a template. When you resolve the page request data, you can pass "watchFiles" or "watchGlobs", which tells Airfry which data dependencies you are interstested in. This does two things. First, if one of the files changed in your data directory matches either watch category, the template in question will be called again. Secondly, and most important, it will be called with inputs.triggeredBy set to the path of the data file that changed, so that you can generate a single page request.
+In your [generate scripts](/templates/generateScript/), you have the option of reading files from the [data directory](/guide/setup#directories) to use when generating multiple pages from a template. When you resolve the page request data, you can pass "watchFiles" or "watchGlobs", which tells Airfry which data dependencies you are interstested in. This does two things. First, if one of the files changed in your data directory matches either watch category, the template in question will be called again. Secondly, and most important, it will be called with inputs.triggeredBy set to the path of the data file that changed, so that you can generate a single page request.
 
 ### Global Data
 
-In your [pre generate script](/docs/templates/preGenerate/), you have the option of resolving global data that is accessible in all templates. So what happens when you tweak "preGenerate.js" after your site is build and while Airfry is monitoring your template directory? Airfry is clever enough to detect which template generate scripts accessed the global data, and will rebuild only those that have.
+In your [pre generate script](/templates/preGenerate/), you have the option of resolving global data that is accessible in all templates. So what happens when you tweak "preGenerate.js" after your site is build and while Airfry is monitoring your template directory? Airfry is clever enough to detect which template generate scripts accessed the global data, and will rebuild only those that have.
 
 ### Template Script References
 

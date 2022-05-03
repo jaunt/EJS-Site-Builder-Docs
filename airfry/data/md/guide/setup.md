@@ -47,7 +47,7 @@ Templates must be in this directory. Airfry will search here recursively when bu
 
 ## Data Directory
 
-This is where you'd put data files whether JSON, markdown, or any other format you choose to support in your template [generate scripts](/docs/templates/generateScript/). Airfry will monitor this folder when checking for [data dependency changes](/docs/performance/dependencyTracking/).
+This is where you'd put data files whether JSON, markdown, or any other format you choose to support in your template [generate scripts](/templates/generateScript/). Airfry will monitor this folder when checking for [data dependency changes](/performance/dependencyTracking/).
 
 ## Output Directory
 
@@ -59,11 +59,11 @@ This directory is copied recursively into your output directory, for your conven
 
 ## Cache Directory
 
-When you use Airfry [caching](/docs/performance/cache/) all data gets stored in this directory. You can delete it at will, or use the "clearCache" option when building for production if desired.
+When you use Airfry [caching](/performance/cache/) all data gets stored in this directory. You can delete it at will, or use the "clearCache" option when building for production if desired.
 
 ## Quit Airfry After Build
 
-On a production build, you probably don't want to keep Airfry running after the site is built. During development, having Airfry monitor file system changes and react instantly with [it's effecient dependency tracking](/docs/performance/dependencyTracking/) is what makes Airfry so much fun to use.
+On a production build, you probably don't want to keep Airfry running after the site is built. During development, having Airfry monitor file system changes and react instantly with [it's effecient dependency tracking](/performance/dependencyTracking/) is what makes Airfry so much fun to use.
 
 ## Don't build, only watch for changes.
 

@@ -21,11 +21,11 @@ This should not be a surprise to you if you use NPM in your other projects. You 
 
 As of Jan 2022, typescript has yet to fully support ESM modules, and the Node JS ecosystem is much more mature when it comes to Common JS. What does this mean for you?
 
-In your [generate scripts](/docs/templates/generateScript/) you have access to "require", which allows you to import modules you add via npm to your project.
+In your [generate scripts](/templates/generateScript/) you have access to "require", which allows you to import modules you add via npm to your project.
 
 If you try to "require" scripts that are ESM only, they will not work.
 
-As soon as typescript 4.6 comes out, Airfry will be updated to better support the new direction of ESM only.
+It might be a while before it's possible to use both ESM and Common JS together, but Airfry will be updated to follow whatever the community ends up with. For now it will stick to Common JS.
 
 You can follow the typescript issue [here](https://github.com/microsoft/TypeScript/issues/46452)
 

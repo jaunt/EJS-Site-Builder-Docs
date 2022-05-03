@@ -12,7 +12,7 @@ order: 2.1
 - Live and Breath Javascript
 - Near Zero Config
 - Opinionated workflow proven in production.
-- [Integrate](/docs/integration/guides/) well with [Vite](https://vitejs.dev/) and other modern tools.
+- [Integrate](/integration/guides/) well with [Vite](https://vitejs.dev/) and other modern tools.
 
 ### Why does Airfry use EJS Templating?
 
@@ -20,7 +20,7 @@ Airfry is a javascript site generator. It wants you do live and breath javascrip
 
 ### Does Airfry support Markdown?
 
-Yes. Airfry leaves it up to you to parse your own data files and pass them to your EJS templates using your [generate scripts](/docs/templates/generateScript/).
+Yes. Airfry leaves it up to you to parse your own data files and pass them to your EJS templates using your [generate scripts](/templates/generateScript/).
 
 It's very easy to parse markdown in this way. Have a look at the generate script used to make these Airfry Docs. See how it uses the awesome [markdown-it](https://github.com/markdown-it/markdown-it) module to parse markdown files:
 
@@ -30,7 +30,7 @@ The sky is the limit. For example, if you wanted to create "sections" in your ma
 
 ### Does Airfry support other Templating Languages?
 
-Yes, but not as first class citizens. See the question above regarding Markdown. Instead of using the markdown-it NPM module in your [generate scripts](/docs/templates/generateScript/), you could find an NPM module for the templating language of your choice, whether it be [handlebars](https://handlebarsjs.com/), [liquid](https://shopify.github.io/liquid/), [nunjucks](https://mozilla.github.io/nunjucks/) etc.
+Yes, but not as first class citizens. See the question above regarding Markdown. Instead of using the markdown-it NPM module in your [generate scripts](/templates/generateScript/), you could find an NPM module for the templating language of your choice, whether it be [handlebars](https://handlebarsjs.com/), [liquid](https://shopify.github.io/liquid/), [nunjucks](https://mozilla.github.io/nunjucks/) etc.
 
 ### Should I use other template languages besides EJS?
 

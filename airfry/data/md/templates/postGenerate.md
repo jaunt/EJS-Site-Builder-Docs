@@ -29,7 +29,7 @@ type OutputData = {
 
 The type "FilesWritten" above is an object where keys are the template names which caused the output, and values are the paths of they outputs they generated.
 
-[Generate scripts](/docs/templates/generateScript/) can also include an "outData" object which lets you collect information during your build for the purposes of summarizing your build. That data is also accessible in the "output" object as a key value pairs, key being the template name, value being the data.
+[Generate scripts](/templates/generateScript/) can also include an "outData" object which lets you collect information during your build for the purposes of summarizing your build. That data is also accessible in the "output" object as a key value pairs, key being the template name, value being the data.
 
 Here's an example of what supplying output data would look like in your generate scripts:
 

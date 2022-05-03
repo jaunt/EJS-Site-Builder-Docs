@@ -13,7 +13,7 @@ There are two kinds of Airfry scripts. Generate scripts for generating your site
 
 When you want to create html pages based on data, you can write javascript which Airfry runs as it builds your site. These are called generate scripts.
 
-Airfry treats generate scripts like they are the body of a [javascript promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). You probably don't need to know about promises in detail to use Airfry. Just understand that you can do what ever you want asynchronously, and when you are done, call 'resolve' or 'reject' with an error. Find out more details in the [generate script](/docs/templates/generateScript/) documentation.
+Airfry treats generate scripts like they are the body of a [javascript promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). You probably don't need to know about promises in detail to use Airfry. Just understand that you can do what ever you want asynchronously, and when you are done, call 'resolve' or 'reject' with an error. Find out more details in the [generate script](/templates/generateScript/) documentation.
 
 #### Embedding in Templates
 
@@ -39,7 +39,7 @@ When Airfry processes the template above, it will strip out the generate script 
 Airfry honours two special scripts, one that is guaranteed to run before anything else, and one that runs after your site build is complete. The pre generation script is a great place to call and cache api responses, build up a table of contents, etc. The post generation script is a good place to summarize the results of your build, likely writing log information or to a json
 file which your web app or devop tools can injest.
 
-Refer to the [pre generate](/docs/templates/preGenerate/) and [post generate](/docs/templates/postGenerate/) documentation for details.
+Refer to the [pre generate](/templates/preGenerate/) and [post generate](/templates/postGenerate/) documentation for details.
 
 ## Webpage Scripts (run-time)
 
@@ -96,7 +96,7 @@ In the case above, your html and entry script will be written as:
     └── about.js
 ```
 
-When using vite, this will all work out very nicely. When building for production, you can use the postGenerate script to generate the rollupOptions with the entry points that were created. See [vite integration](/docs/integration/vite/) for an example.
+When using vite, this will all work out very nicely. When building for production, you can use the postGenerate script to generate the rollupOptions with the entry points that were created. See [vite integration](/integration/vite/) for an example.
 
 #### Lib Scripts
 
@@ -120,4 +120,4 @@ Obviously we wouldn't want this code to be written multiple times a component in
 
 Of course if a template includes your button sub-template, you'd want to include the lib file in its entry script.
 
-See [alpine.js integration](/docs/integration/alpinejs/) for an example.
+See [alpine.js integration](/integration/alpinejs/) for an example.

@@ -15,7 +15,7 @@ Each phase has hooks where you write javascript and provide templates in order t
 
 ### Pre Generation
 
-The [PreGenerate Hook](/docs/templates/preGenerate/) is your first chance to load and massage data that you'll use to render your pages. You might read files or pull data from your APIs before getting it ready for all of your pages.
+The [PreGenerate Hook](/templates/preGenerate/) is your first chance to load and massage data that you'll use to render your pages. You might read files or pull data from your APIs before getting it ready for all of your pages.
 
 For example, perhaps you call a headless wordpress API to download blog data. You'd likely write simple javascript to parse the data, order it, tag it, convert it, cache it, etc.
 
@@ -27,16 +27,16 @@ For data that you only need on a single page (or group of pages generated from a
 
 ## Page Generation
 
-Airfry runs through all your [templates](/docs/templates/templates/), each one generating one or [more](/docs/templates/pagesFromData/) rendered pages.
+Airfry runs through all your [templates](/templates/templates/), each one generating one or [more](/templates/pagesFromData/) rendered pages.
 
-Each template can have its own hook called a [generate script](/docs/templates/generateScript/). Generate scripts are used primarily when you want to spit out multiple pages using the same template.
+Each template can have its own hook called a [generate script](/templates/generateScript/). Generate scripts are used primarily when you want to spit out multiple pages using the same template.
 
 For example, you could write a template to render a blog post with a consistent style and layout, with a generate script that feeds the data you pull down from your headless api through the template for each post.
 
-Templates have access to anything you supply from the [PreGenerate Hook](/docs/templates/preGenerate/), [front matter data](/docs/templates/frontmatter/), and of course the pased from [generate scripts](/docs/templates/generateScript/).
+Templates have access to anything you supply from the [PreGenerate Hook](/templates/preGenerate/), [front matter data](/templates/frontmatter/), and of course the pased from [generate scripts](/templates/generateScript/).
 
 ## Post Generation
 
-The [PostGenerate Hook](/docs/templates/postGenerate/) can be very useful, but you may not need it at first. It's a hook where Airfry sends you information regarding everything that was written by Airfry to your file system while generating your site, for any purposes you might need.
+The [PostGenerate Hook](/templates/postGenerate/) can be very useful, but you may not need it at first. It's a hook where Airfry sends you information regarding everything that was written by Airfry to your file system while generating your site, for any purposes you might need.
 
-For example, perhaps you want to write out a json data structure with links to all the page that were generated to create a site manifest, or perhaps to format the MPA entry points for the [vite configuration file](/docs/integration/vite) for production builds.
+For example, perhaps you want to write out a json data structure with links to all the page that were generated to create a site manifest, or perhaps to format the MPA entry points for the [vite configuration file](/integration/vite) for production builds.

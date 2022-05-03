@@ -27,7 +27,7 @@ Let's say you wanted a shortcode for a youtube video. First you save this somewh
 ></iframe>
 ```
 
-Then in a md file where you want to embed a youtube video, you would simply include it like so:
+Then in an ejs file where you want to embed a youtube video, you would simply include it like so:
 
 **post.ejs**
 

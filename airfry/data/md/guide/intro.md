@@ -15,7 +15,7 @@ _What's awesome about Airfry?_
 
 **Logical and opinionanted workflow** based on decades of software engineering experience. It helps you make the right decisions early on so you don't end up with something unmanagable down the road.
 
-**Integrates with modern tools** like [vite](/docs/integration/vite) in order to make awesome progressivly enhanced websites. Yes, you can score triple 100s on lighthouse and produce awesome SEO results, and not be judged for wanting a little javascript on your pages.
+**Integrates with modern tools** like [vite](/integration/vite/) in order to make awesome progressivly enhanced websites. Yes, you can score triple 100s on lighthouse and produce awesome SEO results, and not be judged for wanting a little javascript on your pages.
 
 ## Quick Start
 
@@ -173,4 +173,4 @@ For example, these very docs are written in markdown.
 
 But if you want to take advantage of ultra efficient dependency tracking, recursive template wrapping, and all the other cool stuff Airfry does for you, you need to use EJS. Checkout the [FAQ](/guide/faq/) for more information.
 
-**random.ejs** is an obscure example of how Airfry generate scripts work. Generate scripts can be specified inline with your templates, and are responsible for doing something with data before sending it one or more times through your template. Generate scripts are asynchronous so you can take as long as you need, as demonstrated by the setTimeout call in our example. There are of course many other useful generate script features [available](docs/templates/generateScript/).
+**random.ejs** is an obscure example of how Airfry generate scripts work. Generate scripts can be specified inline with your templates, and are responsible for doing something with data before sending it one or more times through your template. Generate scripts are asynchronous so you can take as long as you need, as demonstrated by the setTimeout call in our example. There are of course many other useful generate script features [available](/docs/templates/generateScript/).

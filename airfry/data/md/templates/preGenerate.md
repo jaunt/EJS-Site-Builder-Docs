@@ -9,7 +9,7 @@ Step one in Airfry's [workflow](/guide/intro/) is to give you the opportunity to
 
 In order to do so, you must create a file called "preGenerate.js" in your [templates directory](/guide/setup/#directories).
 
-The script itself can be quite simple. It can use any javascript (as well as [using npm node.js modules](/docs/underTheHood/#npm) you add to your project). It behaves similiarly to a javascript promise, in that it can either resolve or reject. See [Airfry scripting basics](/docs/scripts/) for details.
+The script itself can be quite simple. It can use any javascript (as well as [using npm node.js modules](/performance/underTheHood/#npm) you add to your project). It behaves similiarly to a javascript promise, in that it can either resolve or reject. See [Airfry scripting basics](/scripts/) for details.
 
 Here's an example:
 
@@ -58,13 +58,13 @@ resolve({
 
 #### cache
 
-See [caching](/docs/performance/cache/) for details.
+See [caching](/performance/cache/) for details.
 
 ## Outputs
 
 #### global
 
-Must be an object with fields which can be accessed in your templates just as you do [front matter](/docs/templates/frontmatter/).
+Must be an object with fields which can be accessed in your templates just as you do [front matter](/templates/frontmatter/).
 
 In the above example, writing 'data' in any template would show the formatted date as follows:
 
@@ -72,7 +72,7 @@ In the above example, writing 'data' in any template would show the formatted da
 This site was generated on the date: <%= date %>
 ```
 
-Airfry [auto dependency tracking](/docs/performance/dependencyTracking/) will track to see which data you actually
+Airfry [auto dependency tracking](/performance/dependencyTracking/) will track to see which data you actually
 use in your templates. If you make changes to preGenerate.md while Airfry is running, it will only re-generate
 the pages that used the data.
 

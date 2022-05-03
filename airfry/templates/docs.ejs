@@ -6,9 +6,15 @@ docsDir: md
 
 <div class="relative h-screen md:flex">
   <!-- mobile menu bar -->
-  <div class="bg-gray-800 text-gray-100 flex justify-between md:hidden">
+  <div class="bg-gray-800 text-gray-100 flex align-center justify-between md:hidden">
     <!-- logo -->
     <div class="text-xl font-black p-4 text-white">AIRFRY.JS</div>
+
+    <div class="mt-4">
+      <a href="https://github.com/jaunt/airfry">
+        <img class="object-scale-down w-6 inline-block" src="/github.png" alt="airfry github repository">
+        <img class="object-scale-down w-14 inline-block ml-1" src="/github_logo.png" alt="airfry github repository"></a>
+    </div>
 
     <!-- mobile menu button -->
     <button class="mobile-menu-button p-4 focus:outline-none focus:bg-gray-700">
@@ -24,8 +30,13 @@ docsDir: md
     <!-- logo -->
     <a href="/" class="text-xl font-black text-white">AIRFRY.JS</a>
 
+    <div class="mt-4">
+      <a href="https://github.com/jaunt/airfry">
+        <img class="object-scale-down w-6 inline-block" src="/github.png" alt="airfry github repository">
+        <img class="object-scale-down w-14 inline-block ml-1" src="/github_logo.png" alt="airfry github repository"></a>
+    </div>
     <!-- nav -->
-    <nav id="nav">
+    <nav id="nav" class="w-30">
 
     </nav>
   </div>
@@ -39,6 +50,13 @@ docsDir: md
     <div id="showNext" class="border border-1 w-full p-4 mt-8 hidden">
       <div>
         Up Next:
+        <span class="ml-2" id="next">
+        </span>
+      </div>
+    </div>
+    <div id="showEnd" class="border border-1 w-full p-4 mt-8 hidden">
+      <div>
+        Go to the beginning:
         <span class="ml-2" id="next">
         </span>
       </div>
@@ -66,15 +84,21 @@ docsDir: md
   });
   nav.innerHTML = html;
   html = ""
+  let showNextElement = document.querySelector('#showNext')
+  let showDoneElement = document.querySelector('#showEnd')
   let next;
+  let nextElement;
   if (current < toc.length - 1) {
     next = toc[current + 1]
+    showNextElement.style.display = "block"
+    nextElement = showNextElement.querySelector('#next')
+  } else {
+    next = toc[0]
+    showDoneElement.style.display = "block"
+    nextElement = showDoneElement.querySelector('#next')
   }
-  let nextElement = document.querySelector('#next')
-  let showNextElement = document.querySelector('#showNext')
   if (next) {
     nextElement.innerHTML = `<a href="/${next.url}/">${next.title}</a>`
-    showNextElement.style.display = "block"
   }
 </script>
 

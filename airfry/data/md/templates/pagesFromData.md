@@ -73,7 +73,7 @@ Airfry is designed to be as simple and flexbible as possible. What this means is
 
 You don't need to worry too much about the details of this example. It is taken from the Airfry project that created the docs you are reading right now.
 
-You can learn more about how it works on the [generate script page](/docs/templates/generateScript/).
+You can learn more about how it works on the [generate script page](/templates/generateScript/).
 
 When you start Airfry you tell it where your data directory is. The default is **/airfry/data/**
 
@@ -132,10 +132,10 @@ Note: Airfry passes an instance of [frontMatterParse](https://github.com/jxson/f
 
 ### Reusing Generate Scripts
 
-Templates can refer to generate scripts from other templates. This allows you to re-use your generate scripts with built in [dependency tracking.](/docs/performance/dependencyTracking/)
+Templates can refer to generate scripts from other templates. This allows you to re-use your generate scripts with built in [dependency tracking.](/performance/dependencyTracking/)
 
-See details on how to [re-use a generate script from another template in your project](/docs/templates/generateScript)
+See details on how to [re-use a generate script from another template in your project](/templates/generateScript)
 
 **Note 2**: Generate scripts are asynchronously called.
 
-See the complete details on the [generate script page.](/docs/templates/generateScript/)
+See the complete details on the [generate script page.](/templates/generateScript/)
