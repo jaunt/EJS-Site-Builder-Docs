@@ -17,7 +17,7 @@
   "homepage": "https://github.com/jaunt/airfryDocs#readme",
   "scripts": {
     "airfry": "npx airfry --noWatch",
-    "serve": "concurrently --kill-others \"npx airfry\" \"npm run dev\"",
+    "serve": "npx airfry --noWatch && concurrently --kill-others \"npx airfry --watchOnly\" \"npm run dev\"",
     "dev": "vite",
     "build": "npx airfry -nw && vite build",
     "preview": "vite preview"

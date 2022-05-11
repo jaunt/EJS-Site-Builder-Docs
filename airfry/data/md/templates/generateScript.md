@@ -27,7 +27,7 @@ Call to cancel page generation, usually with a failure message to help you debug
 
 ### generate
 
-Call the generate function one ore more times as your page data becomes ready to render. See [page generation requests](/#pageGenerationRequests) for details. You can generate with an array of page requests or for a single page, one at a time. If you're rendering thousands of pages, it might be better to do it in chunks so that you don't use too much RAM, but you can also call this with all your pages at once.
+Call the generate function one ore more times as your page data becomes ready to render. See [page generation requests](#pageGenerationRequests) for details. You can generate with an array of page requests or for a single page, one at a time. If you're rendering thousands of pages, it might be better to do it in chunks so that you don't use too much RAM, but you can also call this with all your pages at once.
 
 ### inputs
 

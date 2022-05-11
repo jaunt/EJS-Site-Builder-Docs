@@ -19,7 +19,7 @@ _What's awesome about Airfry?_
 
 ## Quick Start
 
-- Create an empty [vite](https://vitejs.dev/guide/) project using its vanilla template.
+- Create an empty project using its vanilla template ([see vite docs](https://vitejs.dev/guide/)).
 
 ```bash
 npm init vite@latest airfryStarter --template vanilla
