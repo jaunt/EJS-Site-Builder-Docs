@@ -76,7 +76,7 @@ docsDir: md
       html += `<div class="mt-4 mb-1 font-thin uppercase">${page.group}</div>`
     }
     let prefix = "";
-    if (window.location.pathname + window.location.search == "/" + page.url + "/") {
+    if (document.title == page.title) {
       prefix = "before:content-['|'] before:mr-1";
       current = index;
     }
