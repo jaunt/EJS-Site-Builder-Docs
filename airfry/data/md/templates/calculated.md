@@ -1,11 +1,11 @@
 ---
-title: Calculated Variables
+title: Calculated Data
 order: 7
 ---
 
-# Reserved Variables passed to your templates automatically.
+# Calculated Data
 
-These variables should not be used in your front matter, as they are automatically passed to your templates. You can however use them in your template in case you need to refer to them.
+Airfry passes data specific to each page it renders. These variables should not be used in your front matter, as they are automatically passed to your templates, but of course you can render them in your template if needed.
 
 #### pagePath
 

@@ -66,7 +66,7 @@ touch airfry/templates/index.ejs
 touch airfry/templates/random.ejs
 ```
 
-- Add some html, frontmatter, and template variables to index.ejs
+- Add some html, front matter, and template variables to index.ejs
 
 **index.ejs**
 
@@ -84,7 +84,7 @@ Title: <%= title %>
 <% } %>
 ```
 
-- Add some html, frontmatter, and a silly generate script to random.ejs
+- Add some html, front matter, and a silly generate script to random.ejs
 
 **random.ejs**
 
@@ -165,7 +165,7 @@ If you make changes to your templates, your site should update quickly. When you
 
 ### What happened?
 
-**index.ejs** is pretty simple. You can see how data from frontmatter gets rendered into the template.
+**index.ejs** is pretty simple. You can see how data from front matter gets rendered into the template.
 
 Important: Airfry uses [EJS](https://ejs.co/) for its primary template language because it allows us to use javascript everywhere. You may be wondering if Airfry supports other template languanges. Yes and no. If you have a bunch of existing content in some other template language, it's very easy to use it in your Airfry project.
 
@@ -173,4 +173,4 @@ For example, these very docs are written in markdown.
 
 But if you want to take advantage of ultra efficient dependency tracking, recursive template wrapping, and all the other cool stuff Airfry does for you, you need to use EJS. Checkout the [FAQ](/guide/faq/) for more information.
 
-**random.ejs** is an obscure example of how Airfry generate scripts work. Generate scripts can be specified inline with your templates, and are responsible for doing something with data before sending it one or more times through your template. Generate scripts are asynchronous so you can take as long as you need, as demonstrated by the setTimeout call in our example. There are of course many other useful generate script features [available](/docs/templates/generateScript/).
+**random.ejs** is an obscure example of how Airfry generate scripts work. Generate scripts can be specified inline with your templates, and are responsible for doing something with data before sending it one or more times through your template. Generate scripts are asynchronous so you can take as long as you need, as demonstrated by the setTimeout call in our example. There are of course many other useful generate script features available.

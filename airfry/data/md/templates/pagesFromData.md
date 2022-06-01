@@ -1,9 +1,9 @@
 ---
-title: Making Pages
+title: Pages From Data
 order: 5
 ---
 
-# Making Pages From Data
+# Pages From Data
 
 Writing [EJS templates](https://ejs.co/) is not hard. Nor is writing HTML. But in general it's great if you can separate content from layout and theming at least somewhat, especially as you start to get lots and lots of content.
 

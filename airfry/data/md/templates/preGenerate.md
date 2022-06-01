@@ -1,9 +1,9 @@
 ---
-title: Pre Generate
+title: Pre Generate Hook
 order: 9
 ---
 
-# Preparing Data For All Pages
+# Pre Generate Hook
 
 Step one in Airfry's [workflow](/guide/intro/) is to give you the opportunity to create global data for all your templates.
 

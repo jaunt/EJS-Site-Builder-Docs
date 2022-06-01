@@ -3,6 +3,6 @@ title: Tailwind CSS
 order: 17
 ---
 
-# Using Tailwind with Airfry
+# Tailwind CSS
 
 #### TODO: Point to these docs to show an example of using tailwind.

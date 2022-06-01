@@ -3,7 +3,7 @@ title: Scripting Basics
 order: 4
 ---
 
-# Airfry Scripting Basics
+# Scripting Basics
 
 Airfry lets you embed scripts right in your templates. This is inspired by, but a little different than what you see in vue.js single file templates.
 

@@ -3,7 +3,7 @@ title: Template Wrappers
 order: 11
 ---
 
-# Wrapping Templates
+# Template Wrappers
 
 Any template can wrap another template, as long as it includes a reserved template called **"\_body"**.
 

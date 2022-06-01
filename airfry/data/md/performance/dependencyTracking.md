@@ -3,7 +3,7 @@ title: Dependency Tracking
 order: 15
 ---
 
-# How Airfry tracks your Dependencies
+# Dependency Tracking
 
 One of the main reasons for the existence of Airfry in the first place was to have the fastest possible re-generation of your output pages as you tweak your templates.
 

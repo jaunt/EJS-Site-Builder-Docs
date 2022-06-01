@@ -1,9 +1,9 @@
 ---
-title: Caching
+title: Caching Data
 order: 14
 ---
 
-# Caching API and computed data for quick rebuilds
+# Caching Data
 
 It's likely you might be working on your site for hours at a time. If your site uses external APIs to pull data for page generation, or relies on the creation of intensive computed data in your [generate scripts](/templates/generateScript/), you'll likely want to cache the data so that rebuilding the site is fast (until your cache expires or you clear it for a production build).
 

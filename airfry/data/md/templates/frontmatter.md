@@ -1,9 +1,9 @@
 ---
-title: Frontmatter Variables
+title: Front Matter
 order: 6
 ---
 
-# Template Front Matter
+# Front Matter
 
 **Front matter** is a block of text you can place at the top of your [template files](/templates/templates/) to give Airfry extra details about how to generate html files.
 

@@ -1,9 +1,9 @@
 ---
-title: Post Generate
+title: Post Generate Hook
 order: 10
 ---
 
-# Writing Out Build Summary Data
+# Post Generate Hook
 
 If you add a file called **postGenerate.js** to the root of your template folder, Airfry will call it when the build is complete or after it finishes updating when the filesystem is being monitored.
 
