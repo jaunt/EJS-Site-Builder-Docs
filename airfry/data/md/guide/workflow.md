@@ -39,4 +39,4 @@ Templates have access to anything you supply from the [PreGenerate Hook](/templa
 
 The [PostGenerate Hook](/templates/postGenerate/) can be very useful, but you may not need it at first. It's a hook where Airfry sends you information regarding everything that was written by Airfry to your file system while generating your site, for any purposes you might need.
 
-For example, perhaps you want to write out a json data structure with links to all the page that were generated to create a site manifest, or perhaps to format the MPA entry points for the [vite configuration file](/integration/vite) for production builds.
+For example, perhaps you want to write out a json data structure with links to all the page that were generated to create a site manifest, or perhaps to format the MPA entry points for the [vite configuration file](/integration/vite/) for production builds.
