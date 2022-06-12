@@ -23,7 +23,7 @@
   const markdownitfence = require('markdown-it-fence')
 
   function yourPlugin(md, options) {
-    return markdownitfence(md, "airfry", {
+    return markdownitfence(md, "templer", {
       marker: ":",
       render: (tokens, idx, options, env, self) => {
         const template = tokens[idx].info.trim().split(" ")[1]

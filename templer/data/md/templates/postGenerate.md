@@ -5,9 +5,9 @@ order: 10
 
 # Post Generate Hook
 
-If you add a file called **postGenerate.js** to the root of your template folder, Airfry will call it when the build is complete or after it finishes updating when the filesystem is being monitored.
+If you add a file called **postGenerate.js** to the root of your template folder, Templer will call it when the build is complete or after it finishes updating when the filesystem is being monitored.
 
-Whenever files a written during generation, Airfry keeps track of the details. This data is made available in your postGenerate.js script.
+Whenever files a written during generation, Templer keeps track of the details. This data is made available in your postGenerate.js script.
 
 Your postGenerate.js script will have access to a javascript object called "output". The stucture is as follows:
 

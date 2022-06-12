@@ -5,11 +5,11 @@ order: 9
 
 # Pre Generate Hook
 
-Step one in Airfry's [workflow](/guide/intro/) is to give you the opportunity to create global data for all your templates.
+Step one in Templer's [workflow](/guide/intro/) is to give you the opportunity to create global data for all your templates.
 
 In order to do so, you must create a file called "preGenerate.js" in your [templates directory](/guide/setup/#directories).
 
-The script itself can be quite simple. It can use any javascript (as well as [using npm node.js modules](/performance/underTheHood/#npm) you add to your project). It behaves similiarly to a javascript promise, in that it can either resolve or reject. See [Airfry scripting basics](/scripts/) for details.
+The script itself can be quite simple. It can use any javascript (as well as [using npm node.js modules](/performance/underTheHood/#npm) you add to your project). It behaves similiarly to a javascript promise, in that it can either resolve or reject. See [Templer scripting basics](/scripts/) for details.
 
 Here's an example:
 
@@ -72,8 +72,8 @@ In the above example, writing 'data' in any template would show the formatted da
 This site was generated on the date: <%= date %>
 ```
 
-Airfry [auto dependency tracking](/performance/dependencyTracking/) will track to see which data you actually
-use in your templates. If you make changes to preGenerate.md while Airfry is running, it will only re-generate
+Templer [auto dependency tracking](/performance/dependencyTracking/) will track to see which data you actually
+use in your templates. If you make changes to preGenerate.md while Templer is running, it will only re-generate
 the pages that used the data.
 
 Similarly, templates can call functions you specify.

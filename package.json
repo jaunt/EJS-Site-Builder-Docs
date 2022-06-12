@@ -1,10 +1,11 @@
 {
-  "name": "airfrydocs",
-  "version": "0.0.1",
-  "description": "Airfry Static Site Generator Docs",
+  "name": "templerdocs",
+  "version": "0.0.2",
+  "main": "src/main.js",
+  "description": "Templer Docs",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jaunt/airfryDocs.git"
+    "url": "git+https://github.com/jaunt/templerDocs.git"
   },
   "keywords": [
     "ssg"
@@ -12,27 +13,29 @@
   "author": "Stephen Evans",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jaunt/airfryDocs/issues"
+    "url": "https://github.com/jaunt/templerDocs/issues"
   },
-  "homepage": "https://github.com/jaunt/airfryDocs#readme",
+  "homepage": "https://github.com/jaunt/templerDocs#readme",
   "scripts": {
-    "airfry": "npx airfry --noWatch",
-    "serve": "npx airfry --noWatch && concurrently --kill-others \"npx airfry --watchOnly\" \"npm run dev\"",
+    "templer": "npx templer --noWatch",
+    "serve": "npx templer --noWatch && concurrently --kill-others \"npx templer --watchOnly\" \"npm run dev\"",
     "dev": "vite",
-    "build": "npx airfry -nw && vite build",
+    "build": "npx templer -nw && vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@danglingdev/airfry": "^0.1.0",
+    "@danglingdev/templer": "^0.1.0",
     "@tailwindcss/typography": "^0.5.1",
     "autoprefixer": "^10.4.2",
     "concurrently": "^7.0.0",
     "highlight.js": "^11.5.0",
-    "markdown-it": "^13.0.0",
-    "markdown-it-fence": "^0.1.3",
-    "markdown-it-highlightjs": "^4.0.1",
     "postcss": "^8.4.6",
     "tailwindcss": "^3.0.18",
     "vite": "^2.7.2"
+  },
+  "dependencies": {
+    "markdown-it": "^13.0.1",
+    "markdown-it-fence": "^0.1.3",
+    "markdown-it-highlightjs": "^4.0.1"
   }
 }

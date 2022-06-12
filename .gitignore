@@ -4,6 +4,6 @@ dist
 dist-ssr
 *.local
 src
-airfry/cache
+templer/cache
 # Local Netlify folder
 .netlify

@@ -5,7 +5,7 @@ order: 1.1
 
 # Workflow
 
-In the course of generating your site, Airfry goes through three phases:
+In the course of generating your site, Templer goes through three phases:
 
 1. Pre Generation
 2. Page Generation
@@ -27,7 +27,7 @@ For data that you only need on a single page (or group of pages generated from a
 
 ## Page Generation
 
-Airfry runs through all your [templates](/templates/templates/), each one generating one or [more](/templates/pagesFromData/) rendered pages.
+Templer runs through all your [templates](/templates/templates/), each one generating one or [more](/templates/pagesFromData/) rendered pages.
 
 Each template can have its own hook called a [generate script](/templates/generateScript/). Generate scripts are used primarily when you want to spit out multiple pages using the same template.
 
@@ -37,6 +37,6 @@ Templates have access to anything you supply from the [PreGenerate Hook](/templa
 
 ## Post Generation
 
-The [PostGenerate Hook](/templates/postGenerate/) can be very useful, but you may not need it at first. It's a hook where Airfry sends you information regarding everything that was written by Airfry to your file system while generating your site, for any purposes you might need.
+The [PostGenerate Hook](/templates/postGenerate/) can be very useful, but you may not need it at first. It's a hook where Templer sends you information regarding everything that was written by Templer to your file system while generating your site, for any purposes you might need.
 
 For example, perhaps you want to write out a json data structure with links to all the page that were generated to create a site manifest, or perhaps to format the MPA entry points for the [vite configuration file](/integration/vite/) for production builds.

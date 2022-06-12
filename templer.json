@@ -1,0 +1,10 @@
+{
+  "options": {
+    "input": "./templer/templates",
+    "data": "./templer/data",
+    "public": "./templer/public",
+    "cache": "./templer/cache",
+    "output": "./src",
+    "verbose": "true"
+  }
+}

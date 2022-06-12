@@ -5,9 +5,9 @@ order: 13
 
 # Under The Hood
 
-## Airfry and Node.JS VM
+## Templer and Node.JS VM
 
-Airfry runs as a Node JS CLI app and is written in typescript.
+Templer runs as a Node JS CLI app and is written in typescript.
 
 Your generate scripts are loaded and run using the Node JS VM. See [Node JS VM Documentation](https://nodejs.org/api/vm.html).
 
@@ -25,17 +25,17 @@ In your [generate scripts](/templates/generateScript/) you have access to "requi
 
 If you try to "require" scripts that are ESM only, they will not work.
 
-It might be a while before it's possible to use both ESM and Common JS together, but Airfry will be updated to follow whatever the community ends up with. For now it will stick to Common JS.
+It might be a while before it's possible to use both ESM and Common JS together, but Templer will be updated to follow whatever the community ends up with. For now it will stick to Common JS.
 
 You can follow the typescript issue [here](https://github.com/microsoft/TypeScript/issues/46452)
 
 ### Source Code Stats
 
-Airfry is around 2000 lines of typescript code.
+Templer is around 2000 lines of typescript code.
 
 ### Dependencies
 
-Here are the NPM modules Airfry depends on:
+Here are the NPM modules Templer depends on:
 
 #### Build Time Dependencies
 
