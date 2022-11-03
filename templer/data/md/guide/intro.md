@@ -5,11 +5,11 @@ order: 1
 
 # Introduction
 
-_What's awesome about Templers?_
+_What's awesome about Templer?_
 
 **Effecient dependecy tracking** baked-in from the ground up, giving you super-fast change updates, even on massive sites with thousands of pages.
 
-**Powered by your javascript**. There's no configuration file to balloon out of control. Templer doesn't offer "yet another plug-in architecture" because we already have NPM for that. If you love javascript, you'll be right at home.
+**Powered by your javascript**. There's no configuration file to balloon out of control. Templer doesn't offer "yet another plug-in architecture" because we already have NPM for that. If you love javascript, you'll be right at home!
 
 **Minimal** by design. It doesn't pollute itself with half-baked semi-useful blogging features that are never quite enough. It's written in typescript, is under 2000 lines of code, and will always be kept as simple as possible.
 

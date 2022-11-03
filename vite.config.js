@@ -14,7 +14,6 @@ export default defineConfig({
   // config options
   root: "./src",
   plugins: [],
-  logLevel: "warn",
   build: {
     rollupOptions: {
       input: {
