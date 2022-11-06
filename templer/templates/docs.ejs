@@ -100,6 +100,28 @@ docsDir: md
   if (next) {
     nextElement.innerHTML = `<a href="/${next.url}/">${next.title}</a>`
   }
+
+  // grab everything we need
+  const btn = document.querySelector(".mobile-menu-button");
+  const sidebar = document.querySelector(".sidebar");
+
+  // close sidebar if user clicks outside of the sidebar
+  document.addEventListener("click", (event) => {
+    const isOpen = sidebar.classList.contains("-translate-x-full")
+    const isButtonClick = btn.contains(event.target);
+    const isOutsideClick =
+      sidebar !== event.target && !sidebar.contains(event.target);
+    // if the user clicks the button, then toggle the class
+    if (isButtonClick) {
+      sidebar.classList.toggle("-translate-x-full");
+      return;
+    }
+    // check to see if user clicks outside the sidebar
+    if (!isOpen && isOutsideClick) {
+      sidebar.classList.add("-translate-x-full");
+      return;
+    }
+  });
 </script>
 
 
