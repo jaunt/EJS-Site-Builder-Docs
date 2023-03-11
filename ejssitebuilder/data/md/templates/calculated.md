@@ -5,7 +5,7 @@ order: 7
 
 # Calculated Data
 
-Templer passes data specific to each page it renders. These variables should not be used in your front matter, as they are automatically passed to your templates, but of course you can render them in your template if needed.
+EJS Site Builder passes data specific to each page it renders. These variables should not be used in your front matter, as they are automatically passed to your templates, but of course you can render them in your template if needed.
 
 #### pagePath
 

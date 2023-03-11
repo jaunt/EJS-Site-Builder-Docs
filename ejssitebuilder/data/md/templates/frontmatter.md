@@ -5,13 +5,13 @@ order: 6
 
 # Front Matter
 
-**Front matter** is a block of text you can place at the top of your [template files](/templates/templates/) to give Templer extra details about how to generate html files.
+**Front matter** is a block of text you can place at the top of your [template files](/templates/templates/) to give EJS Site Builder extra details about how to generate html files.
 
-Front matter is designed to be human readable at a glance, but is also parsed by Templer, so it must follow specific rules. But don't worry, it's easy! Templer's front matter must be written in [YAML](https://yaml.org/), which is self described as "a human-friendly data serialization language for all programming languages."
+Front matter is designed to be human readable at a glance, but is also parsed by EJS Site Builder, so it must follow specific rules. But don't worry, it's easy! EJS Site Builder's front matter must be written in [YAML](https://yaml.org/), which is self described as "a human-friendly data serialization language for all programming languages."
 
 ## Variables For Rendering
 
-Front matter can be used as data when rendering your template. Templer uses [EJS templating](https://ejs.co/) so that you can do everything in javascript without dealing with other templating languages. To use a front matter variable in your EJS template, you'd do something like this:
+Front matter can be used as data when rendering your template. EJS Site Builder uses [EJS templating](https://ejs.co/) so that you can do everything in javascript without dealing with other templating languages. To use a front matter variable in your EJS template, you'd do something like this:
 
 ```html
 ---
@@ -50,9 +50,9 @@ Fruit: <%= name %>
 
 **Note 2:** As long as you don't use a reserved name, you can pass any data to your templates using front matter variables. Variables that you specify can also be accessed from your [generate scripts](/templates/generateScript/).
 
-## Reserved Variables that control Templer's behaviour
+## Reserved Variables that control EJS Site Builder's behaviour
 
-Templer assigns special meaning to several variables which you can use to configure your template's output:
+EJS Site Builder assigns special meaning to several variables which you can use to configure your template's output:
 
 ### Generate
 
@@ -62,7 +62,7 @@ generate: <path>
 ---
 ```
 
-Generate tells templer that a template is going to directly generate one or more html pages.
+Generate tells ejssitebuilder that a template is going to directly generate one or more html pages.
 
 **<path>** is the relative path off the root of your site where the corresponding output index.html file will be generated. If a [generate script](/templates/generateScript/) is specified in your template, the path can be used with a wildcard to indicate the base path for multiple output files.
 

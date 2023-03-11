@@ -1,14 +1,12 @@
 const { resolve } = require("path");
 import { defineConfig } from "vite";
 
-import toc from "./src/toc.json";
+import toc from "./src/entrypoints.json";
 
-const mpa = toc.reduce((acc, item) => {
-  const entry = {
-    [item.url]: resolve(__dirname, "src/" + item.url + "/index.html"),
-  };
-  return { ...acc, ...entry };
-}, {});
+let mpa = {};
+for (url in toc) {
+  mpa[url] = resolve(__dirname, "src/" + url + "/index.html");
+}
 
 export default defineConfig({
   // config options

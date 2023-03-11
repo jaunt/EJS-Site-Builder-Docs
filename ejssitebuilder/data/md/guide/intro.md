@@ -5,11 +5,11 @@ order: 1
 
 # Introduction
 
-_What's awesome about Templer?_
+_What's awesome about EJS Site Builder?_
 
 **Effecient dependecy tracking** baked-in from the ground up, giving you super-fast change updates, even on massive sites with thousands of pages.
 
-**Powered by your javascript**. There's no configuration file to balloon out of control. Templer doesn't offer "yet another plug-in architecture" because we already have NPM for that. If you love javascript, you'll be right at home!
+**Powered by your javascript**. There's no configuration file to balloon out of control. EJS Site Builder doesn't offer "yet another plug-in architecture" because we already have NPM for that. If you love javascript, you'll be right at home!
 
 **Minimal** by design. It doesn't pollute itself with half-baked semi-useful blogging features that are never quite enough. It's written in typescript, is under 2000 lines of code, and will always be kept as simple as possible.
 
@@ -22,21 +22,21 @@ _What's awesome about Templer?_
 - Create an empty project using its vanilla template ([see vite docs](https://vitejs.dev/guide/)).
 
 ```bash
-npm init vite@latest templerStarter --template vanilla
-cd templerStarter
+npm init vite@latest ejssitebuilderStarter --template vanilla
+cd ejssitebuilderStarter
 npm install
 ```
 
-- Install templer
+- Install ejssitebuilder
 
 ```bash
-npm add @danglingdev/templer
+npm add @danglingdev/ejssitebuilder
 ```
 
-- Create an templer directory where all the "ingredients" go, and a src directory where vite will serve your site from:
+- Create an ejssitebuilder directory where all the "ingredients" go, and a src directory where vite will serve your site from:
 
 ```bash
-mkdir templer
+mkdir ejssitebuilder
 mkdir src
 ```
 
@@ -61,9 +61,9 @@ export default {
 - Create some templates to render the site
 
 ```bash
-mkdir -p templer/templates
-touch templer/templates/index.ejs
-touch templer/templates/random.ejs
+mkdir -p ejssitebuilder/templates
+touch ejssitebuilder/templates/index.ejs
+touch ejssitebuilder/templates/random.ejs
 ```
 
 - Add some html, front matter, and template variables to index.ejs
@@ -118,42 +118,42 @@ Random: <%= title %>
 </script>
 ```
 
-- Install concurrently to be able to trigger templer and vite concurrently:
+- Install concurrently to be able to trigger ejssitebuilder and vite concurrently:
 
 ```bash
 npm install concurrently
 ```
 
-- Update package.json to be able to trigger templer
+- Update package.json to be able to trigger ejssitebuilder
 
 **package.json**
 
 ```bash
 ... snip ...
   "scripts": {
-    "templer": "npx templer --noWatch",
-    "serve": "concurrently --kill-others \"npx templer\" \"npm run dev\"",
+    "ejssitebuilder": "npx ejssitebuilder --noWatch",
+    "serve": "concurrently --kill-others \"npx ejssitebuilder\" \"npm run dev\"",
 ... snip ...
 ```
 
-- Tell templer where to find the templates and where to output the results
+- Tell ejssitebuilder where to find the templates and where to output the results
 
 ```bash
-touch templer.json
+touch ejssitebuilder.json
 ```
 
-**templer.json**
+**ejssitebuilder.json**
 
 ```javascript
 {
   "options": {
-    "input": "./templer/templates",
+    "input": "./ejssitebuilder/templates",
     "output": "./src"
   }
 }
 ```
 
-- Turn on the templerer!
+- Turn on the ejssitebuilderer!
 
 ```bash
 npm run serve
@@ -161,16 +161,16 @@ npm run serve
 
 Vite should run very quickly and your new site should be ready to explore, probably at http://localhost:3000 but check the console output to be sure.
 
-If you make changes to your templates, your site should update quickly. When you are done, exit templer and vite with ctrl-c from the console.
+If you make changes to your templates, your site should update quickly. When you are done, exit ejssitebuilder and vite with ctrl-c from the console.
 
 ### What happened?
 
 **index.ejs** is pretty simple. You can see how data from front matter gets rendered into the template.
 
-Important: Templer uses [EJS](https://ejs.co/) for its primary template language because it allows us to use javascript everywhere. You may be wondering if Templer supports other template languanges. Yes and no. If you have a bunch of existing content in some other template language, it's very easy to use it in your Templer project.
+Important: EJS Site Builder uses [EJS](https://ejs.co/) for its primary template language because it allows us to use javascript everywhere. You may be wondering if EJS Site Builder supports other template languanges. Yes and no. If you have a bunch of existing content in some other template language, it's very easy to use it in your EJS Site Builder project.
 
 For example, these very docs are written in markdown.
 
-But if you want to take advantage of ultra efficient dependency tracking, recursive template wrapping, and all the other cool stuff Templer does for you, you need to use EJS. Checkout the [FAQ](/guide/faq/) for more information.
+But if you want to take advantage of ultra efficient dependency tracking, recursive template wrapping, and all the other cool stuff EJS Site Builder does for you, you need to use EJS. Checkout the [FAQ](/guide/faq/) for more information.
 
-**random.ejs** is an obscure example of how Templer generate scripts work. Generate scripts can be specified inline with your templates, and are responsible for doing something with data before sending it one or more times through your template. Generate scripts are asynchronous so you can take as long as you need, as demonstrated by the setTimeout call in our example. There are of course many other useful generate script features available.
+**random.ejs** is an obscure example of how EJS Site Builder generate scripts work. Generate scripts can be specified inline with your templates, and are responsible for doing something with data before sending it one or more times through your template. Generate scripts are asynchronous so you can take as long as you need, as demonstrated by the setTimeout call in our example. There are of course many other useful generate script features available.

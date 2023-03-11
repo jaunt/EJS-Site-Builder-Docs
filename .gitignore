@@ -4,6 +4,6 @@ dist
 dist-ssr
 *.local
 src
-templer/cache
+ejssitebuilder/cache
 # Local Netlify folder
 .netlify

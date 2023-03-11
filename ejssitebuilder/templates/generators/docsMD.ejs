@@ -1,0 +1,114 @@
+---
+generate:
+---
+<script generate>
+  (({
+    require,
+    generatePages,
+    inputs,
+    getDataFileNames,
+    log,
+    frontMatterParse,
+    dataDir,
+    renderTemplate,
+    cache
+  }) => {
+
+    var md = require('markdown-it')().use(require('markdown-it-highlightjs'));
+    const path = require("path");
+
+    let docs;
+    const fs = require("fs");
+    const docsDir = inputs.frontMatter.docsDir
+
+    log("beginning docsMD generate")
+
+    if (!inputs.triggeredBy) {
+      // get absolute paths to data files
+      docs = getDataFileNames(docsDir + "/**/*.md");
+    } else {
+      if (inputs.triggeredBy.reason != "Deleted") {
+        docs = [inputs.triggeredBy.path];
+      } else {
+        // else ignore deleted data files.
+        resolve();
+        return;
+      }
+    }
+
+    const markdownitfence = require('markdown-it-fence')
+
+    function yourPlugin(md, options) {
+      return markdownitfence(md, "ejssitebuilder", {
+        marker: ":",
+        render: (tokens, idx, options, env, self) => {
+          const template = tokens[idx].info.trim().split(" ")[1]
+          const data = JSON.parse(tokens[idx].content.trim())
+          return renderTemplate(template, data)
+        },
+      })
+    }
+    md.use(yourPlugin)
+
+    let mapped = docs.map((filepath) => {
+      const raw = fs.readFileSync(filepath, "utf8");
+      const content = frontMatterParse(raw);
+      const html = md.render(content.body);
+      const title = content.attributes.title;
+      const order = content.attributes.order;
+      // Use our data paths to specify output paths.
+      // Data dir is the absolute path to our data dir
+      // We also truncate the '.md' of path names.
+      const relPath = filepath.split(dataDir + "/" +
+        docsDir + "/")[1].slice(0, -3);
+
+      const group = relPath.split("/")[0]
+
+      return {
+        path: relPath,
+        data: {
+          group: group,
+          title: title,
+          html: html,
+          order: order,
+        },
+      };
+    });
+
+    let toc
+    try {
+      let toc = inputs.global.toc
+    } catch {
+      toc = {}
+    }
+
+    if (inputs.triggeredBy) {
+      const page = mapped[0]
+      let update = {
+        title: page.data.title,
+        order: page.data.order,
+        group: page.data.group,
+      }
+      toc[page.path] = update;
+    } else {
+      // a full update rebuilds the table of contents
+      for (const item of mapped) {
+        toc[item.path] = {
+          title: item.data.title,
+          order: item.data.order,
+          group: item.data.group,
+        }
+      }
+    }
+
+    generatePages(mapped);
+
+    return {
+      watchGlobs: [docsDir + "/**/*.md"],
+      cache: cache,
+      global: {
+        toc: toc,
+      }
+    };
+  })
+</script>

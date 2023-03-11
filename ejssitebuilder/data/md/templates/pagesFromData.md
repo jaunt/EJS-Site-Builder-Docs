@@ -11,7 +11,7 @@ For example, consider a blog. It's likely that you'd want to estabilsh a consist
 
 Most site generators offer interesting canned ways of doing this. For example maybe you specify a content folder and the tool scans and renders markdown files. Maybe it supports any kind of template by default, and it automatically scans all your folders looking for tags and tries to create a blog for you. **Aifry does none of this, by design.**
 
-Instead, Templer lets you add a generate scripts to templates.
+Instead, EJS Site Builder lets you add a generate scripts to templates.
 
 ### Generate Script Overview
 
@@ -69,17 +69,17 @@ generate: posts/petphotos/*
 
 #### Step 2: Create Generate Scripts for Posts
 
-Templer is designed to be as simple and flexbible as possible. What this means is that you can use any javascript npm library you want to process your data files. Of course this means you need to be at least a little familiar with npm. The following example assumes you've added the npm module [markdown-it](https://github.com/markdown-it/markdown-it) to your project.
+EJS Site Builder is designed to be as simple and flexbible as possible. What this means is that you can use any javascript npm library you want to process your data files. Of course this means you need to be at least a little familiar with npm. The following example assumes you've added the npm module [markdown-it](https://github.com/markdown-it/markdown-it) to your project.
 
-You don't need to worry too much about the details of this example. It is taken from the Templer project that created the docs you are reading right now.
+You don't need to worry too much about the details of this example. It is taken from the EJS Site Builder project that created the docs you are reading right now.
 
 You can learn more about how it works on the [generate script page](/templates/generateScript/).
 
-When you start Templer you tell it where your data directory is. The default is **/templer/data/**
+When you start EJS Site Builder you tell it where your data directory is. The default is **/ejssitebuilder/data/**
 
-For this example, let's assume you have all your posts in a folder under **/templer/data/md/**
+For this example, let's assume you have all your posts in a folder under **/ejssitebuilder/data/md/**
 
-Note: Templer passes an instance of [frontMatterParse](https://github.com/jxson/front-matter) to your generate scripts which you can use in case you want to use front matter in your data files. This is what's happening in the following example, but is entirely optional.
+Note: EJS Site Builder passes an instance of [frontMatterParse](https://github.com/jxson/front-matter) to your generate scripts which you can use in case you want to use front matter in your data files. This is what's happening in the following example, but is entirely optional.
 
 ```html
 <script generate>
@@ -88,15 +88,15 @@ Note: Templer passes an instance of [frontMatterParse](https://github.com/jxson/
   let docs;
 
   if (!inputs.triggeredBy) {
-    // Templer will call your script at launch and when your template
+    // EJS Site Builder will call your script at launch and when your template
     // file changes.  getDataFileNames is convenience utility supplied
-    // by Templer to get the absolute file names in folders relative
-    // to the data directory you specified when starting Templer
+    // by EJS Site Builder to get the absolute file names in folders relative
+    // to the data directory you specified when starting EJS Site Builder
     // using the standard "glob" pattern matching.
     docs = getDataFileNames("md/**/*.md");
   } else {
-    // Templer will also call your script if one of the files you asked
-    // for changes while Templer is still running.  This lets you re-render
+    // EJS Site Builder will also call your script if one of the files you asked
+    // for changes while EJS Site Builder is still running.  This lets you re-render
     // a single file, rather than rendering all data files again!
     docs = [inputs.triggeredBy];
   }
@@ -107,7 +107,7 @@ Note: Templer passes an instance of [frontMatterParse](https://github.com/jxson/
     const html = md.render(content.body);
     const title = content.attributes.title;
     // Use our data paths to specify output paths.
-    // dataDir is supplied by Templer and is the absolute path to our data dir
+    // dataDir is supplied by EJS Site Builder and is the absolute path to our data dir
     // We also truncate the '.md' of path names.
     const relPath = filepath.split(dataDir + "/md/")[1].slice(0, -3);
     return {
@@ -122,7 +122,7 @@ Note: Templer passes an instance of [frontMatterParse](https://github.com/jxson/
   resolve({
     // the list of pages to generate through this template:
     generate: mapped,
-    // Tell templer which data files to watch.
+    // Tell ejssitebuilder which data files to watch.
     // If they change after the initial render, this generate script
     // will be called with "inputs.triggeredBy" set to the file that changed.
     watchGlobs: ["md/**/*.md"],

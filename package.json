@@ -1,11 +1,11 @@
 {
-  "name": "templerdocs",
-  "version": "0.0.2",
+  "name": "ejssitebuilderdocs",
+  "version": "1.0.0",
   "main": "src/main.js",
-  "description": "Templer Docs",
+  "description": "EJS Site Builder Docs",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jaunt/templerDocs.git"
+    "url": "git+https://github.com/jaunt/EJS-Site-Builder-Docs.git"
   },
   "keywords": [
     "ssg"
@@ -13,27 +13,28 @@
   "author": "Stephen Evans",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jaunt/templerDocs/issues"
+    "url": "https://github.com/jaunt/EJS-Site-Builder-Docs/issues"
   },
-  "homepage": "https://github.com/jaunt/templerDocs#readme",
+  "homepage": "https://github.com/jaunt/EJS-Site-Builder-Docs#readme",
   "scripts": {
-    "templer": "npx templer --noWatch",
-    "serve": "npx templer --noWatch && concurrently --kill-others \"npx templer --watchOnly\" \"npm run dev\"",
+    "ejssitebuilder": "npx ejssitebuilder --noWatch",
+    "serve": "concurrently --kill-others \"npx ejssitebuilder\" \"npm run dev\"",
     "dev": "vite",
-    "build": "npx templer -nw && vite build",
-    "preview": "vite preview"
+    "build": "npx ejssitebuilder -nw && vite build",
+    "preview": "vite preview",
+    "buildOnly": "vite build"
   },
   "devDependencies": {
-    "@danglingdev/templer": "^1.0.0",
     "@tailwindcss/typography": "^0.5.1",
     "autoprefixer": "^10.4.2",
     "concurrently": "^7.0.0",
     "highlight.js": "^11.5.0",
     "postcss": "^8.4.6",
     "tailwindcss": "^3.0.18",
-    "vite": "^3.2.2"
+    "vite": "^4.1.4"
   },
   "dependencies": {
+    "@danglingdev/ejs-site-builder": "^2.0.3",
     "markdown-it": "^13.0.1",
     "markdown-it-fence": "^0.1.3",
     "markdown-it-highlightjs": "^4.0.1"

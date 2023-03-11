@@ -5,7 +5,7 @@ order: 1.1
 
 # Workflow
 
-In the course of generating your site, Templer goes through three phases:
+In the course of generating your site, EJS Site Builder goes through three phases:
 
 1. Pre Generation
 2. Page Generation
@@ -27,16 +27,18 @@ For data that you only need on a single page (or group of pages generated from a
 
 ## Page Generation
 
-Templer runs through all your [templates](/templates/templates/), each one generating one or [more](/templates/pagesFromData/) rendered pages.
+EJS Site Builder runs through all your [templates](/templates/templates/), each one generating one or [more](/templates/pagesFromData/) rendered pages.
 
 Each template can have its own hook called a [generate script](/templates/generateScript/). Generate scripts are used primarily when you want to spit out multiple pages using the same template.
 
 For example, you could write a template to render a blog post with a consistent style and layout, with a generate script that feeds the data you pull down from your headless api through the template for each post.
 
-Templates have access to anything you supply from the [PreGenerate Hook](/templates/preGenerate/), [front matter data](/templates/frontmatter/), and of course the pased from [generate scripts](/templates/generateScript/).
+Templates have access to anything you supply from the [PreGenerate Hook](/templates/preGenerate/), [front matter data](/templates/frontmatter/), and of course data passed from [generate scripts](/templates/generateScript/).
 
 ## Post Generation
 
-The [PostGenerate Hook](/templates/postGenerate/) can be very useful, but you may not need it at first. It's a hook where Templer sends you information regarding everything that was written by Templer to your file system while generating your site, for any purposes you might need.
+The [PostGenerate Hook](/templates/postGenerate/) can be very useful, but you may not need it at first. It's a hook where EJS Site Builder sends you information regarding everything that was written by EJS Site Builder to your file system while generating your site, for any purposes you might need.
 
 For example, perhaps you want to write out a json data structure with links to all the page that were generated to create a site manifest, or perhaps to format the MPA entry points for the [vite configuration file](/integration/vite/) for production builds.
+
+If

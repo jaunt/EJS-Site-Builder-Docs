@@ -1,0 +1,10 @@
+{
+  "options": {
+    "input": "./ejssitebuilder/templates",
+    "data": "./ejssitebuilder/data",
+    "public": "./ejssitebuilder/public",
+    "cache": "./ejssitebuilder/cache",
+    "output": "./src",
+    "verbose": "true"
+  }
+}

@@ -1,0 +1,81 @@
+---
+generate: /*
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <% pages.forEach(function(page){ %>
+  <url>
+    <loc>https:/ejssitebuilder.netlify.app/<%= page.url %>/index.html</loc>
+    <lastmod><%= buildTime %></lastmod>
+  </url>
+  <% }); %>
+</urlset>
+<script generate>
+  // func is called during the generate phase
+  (({
+    log,
+    inputs,
+    cache,
+    renderTemplate,
+  }) => {
+    const filesWritten = inputs.global.toc || {};
+    const oldFilesWritten = cache["oldFilesWritten"] || {};
+
+    function shallowEqual(object1, object2) {
+      const keys1 = Object.keys(object1);
+      const keys2 = Object.keys(object2);
+      if (keys1.length !== keys2.length) {
+        return false;
+      }
+      for (let key of keys1) {
+        if (object1[key] !== object2[key]) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    if (!shallowEqual(filesWritten, oldFilesWritten)) {
+      // save old toc for next time, shallow copied
+      // to avoid getting updated by reference
+      cache["oldFilesWritten"] = {
+        data: filesWritten,
+      };
+
+      const pages = Object.keys(filesWritten).map((path) => {
+        return {
+          url: path,
+          group: filesWritten[path].group,
+          title: filesWritten[path].title,
+          order: filesWritten[path].order,
+        };
+      });
+
+      // sort pages by order
+      pages.sort((a, b) => {
+        return a.order - b.order;
+      });
+
+      // get date in YYYY-MM-DD format
+      const buildTime = new Date().toISOString().split("T")[0];
+
+      const html = renderTemplate(
+        "postGenerate", {
+          buildTime: buildTime,
+          pages: pages
+        }
+      )
+
+      return {
+        siteFiles: {
+          "entrypoints.json": filesWritten,
+          "toc.json": pages,
+          "sitemap.xml": html,
+        },
+        cache: cache,
+      };
+    }
+
+    return {}
+  })
+</script>
