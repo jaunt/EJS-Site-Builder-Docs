@@ -26,7 +26,3 @@ This would also be the name of an entry script if you chose to generate one. Thi
 ```
   <script type="module" src="<%- pagePath %>/<%- lastPath %>.js"></script>
 ```
-
-#### global
-
-This is structured data that you can provide to all templates from your [preGenerate Script](/templates/preGenerate/)

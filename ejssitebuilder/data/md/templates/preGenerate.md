@@ -5,79 +5,56 @@ order: 9
 
 # Pre Generate Hook
 
-Step one in EJS Site Builder's [workflow](/guide/intro/) is to give you the opportunity to create global data for all your templates.
+Step one in EJS Site Builder's [workflow](/guide/intro/) is to give you the opportunity to create global data for all your templates. You can also use it to render a page.
 
 In order to do so, you must create a file called "preGenerate.js" in your [templates directory](/guide/setup/#directories).
 
 The script itself can be quite simple. It can use any javascript (as well as [using npm node.js modules](/performance/underTheHood/#npm) you add to your project). It behaves similiarly to a javascript promise, in that it can either resolve or reject. See [EJS Site Builder scripting basics](/scripts/) for details.
 
-Here's an example:
+Here's an example of a script to create a site map, based on the project that created these docs, assuming all previous pages wrote to a toc object in global data:
 
-**preGenerate.js**
+**preGenerate.ejs**
 
-```javascript
-// preGenerate.js is called before anything else
-// so that we can build up any global data we want to pass to all
-// generator functions.
-//
-// It must resolve asynchronously
-// or reject on failure.
-//
-// preGenerate.js has access to
-// cache: a javascript object scripts can use to cache any data that can be json.stringified
-//
-// Outputs:
-//
-// global: object which can be accessed from any generate script, including "filter" funtions.
-//
-// siteFiles: list of json serializable objects which will created as json files
-//            for the purposes of loading in to the web site's runtime javascript code
-const now = new Date("2015-03-25"); // today's date formatted however you want
-const version = 1.4; // you could get this from git pretty easily
+```html
+<script generate>
+  async () => {
+    const now = calcalateMyBuildDate();
+    const version = await getGitTagVersion();
 
-// you can define functions as well, which become available in all your templates
-const toLowerCaseUseless = function (text) {
-  return text.toLowerCase() + " this is useless";
-};
+    const toLowerCase = function (text) {
+      return text.toLowerCase();
+    };
 
-resolve({
-  siteFiles: {
-    "/version.json": {
-      createdDate: now,
-      version: version,
-    },
-  },
-  global: {
-    date: now,
-    toLowerCase: toLowerCaseUseless,
-  },
-});
+    return {
+      siteFiles: {
+        "/version.json": {
+          createdDate: now,
+          version: version,
+        },
+      },
+      global: {
+        date: now,
+        toLowerCase: toLowerCase, // can even pass functions to global data
+      },
+    };
+  };
+</script>
 ```
-
-## Inputs
-
-#### cache
-
-See [caching](/performance/cache/) for details.
 
 ## Outputs
 
-#### global
-
-Must be an object with fields which can be accessed in your templates just as you do [front matter](/templates/frontmatter/).
-
-In the above example, writing 'data' in any template would show the formatted date as follows:
-
-```html
-This site was generated on the date: <%= date %>
+```typescript
+// things you can return from a generator script:
+type GeneratorResponse = {
+  cache: CacheData;
+  siteFiles: { [key: Path]: unknown };
+  watchFiles: Path[];
+  watchGlobs: string[];
+  global: PageData; // only valid from pregenerat
+};
 ```
 
-EJS Site Builder [auto dependency tracking](/performance/dependencyTracking/) will track to see which data you actually
-use in your templates. If you make changes to preGenerate.md while EJS Site Builder is running, it will only re-generate
-the pages that used the data.
-
-Similarly, templates can call functions you specify.
-
-#### siteFiles
-
-This allows you to conveniently output non html files during the pre generate phase. The file name is the key, and the data will be strinfied from the key's value.
+Note: EJS Site Builder [auto dependency tracking](/performance/dependencyTracking/) will track to see which
+data you actually use in your templates. If you make changes to preGenerate.ejs
+while EJS Site Builder is running, it will only re-generate the pages that used
+any global data.

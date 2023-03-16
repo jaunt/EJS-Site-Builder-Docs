@@ -13,8 +13,6 @@ There are two kinds of EJS Site Builder scripts. Generate scripts for generating
 
 When you want to create html pages based on data, you can write javascript which EJS Site Builder runs as it builds your site. These are called generate scripts.
 
-EJS Site Builder treats generate scripts like they are the body of a [javascript promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise). You probably don't need to know about promises in detail to use EJS Site Builder. Just understand that you can do what ever you want asynchronously, and when you are done, call 'resolve' or 'reject' with an error. Find out more details in the [generate script](/templates/generateScript/) documentation.
-
 #### Embedding in Templates
 
 Generate scripts can be embedded in templates like so:
@@ -36,16 +34,15 @@ When EJS Site Builder processes the template above, it will strip out the genera
 
 #### Pre and Post Generate Scripts
 
-EJS Site Builder honours two special scripts, one that is guaranteed to run before anything else, and one that runs after your site build is complete. The pre generation script is a great place to call and cache api responses, build up a table of contents, etc. The post generation script is a good place to summarize the results of your build, likely writing log information or to a json
-file which your web app or devop tools can injest.
+EJS Site Builder honours two special ejs files in the root of your input directory called **preGenerate.ejs** and **postGenerate.ejs**. The first is guaranteed to run before anything else, and the other runs after your site build is complete. The pre generation template is a great place to call and cache api responses, build up a table of contents, etc. The post generation template is a good place to summarize the results of your build, likely writing log information or to a json file which your web app or devop tools can injest.
 
 Refer to the [pre generate](/templates/preGenerate/) and [post generate](/templates/postGenerate/) documentation for details.
 
-## Webpage Scripts (run-time)
+## Web 'App' Scripts (run-time)
 
-Consider your website once's it has been fully generated. It's quite often you'll want at least some javascript to help with interactivity or whatever else you might need.
+Consider your website once's it has been fully generated. It's quite often you'll want at least some run-time javascript to help with interactivity or whatever else you might need. This has nothing to do with build-time javascript which lives in your templates under <script generate></script> tags.
 
-_Note: There are plenty of [lighthouse](https://developers.google.com/web/tools/lighthouse) page score zeaots out there who will say you must have 100 page scores across the board to be succesful. Feel free to have absolutely no javascript in your final webpage if you want, but for the rest of use, please continue..._
+_Note: There are plenty of [lighthouse](https://developers.google.com/web/tools/lighthouse) page score zeaots out there who will say you must have no javascript to be cool. Feel free to have absolutely no javascript in your final webpage if you want, but for the rest of use, please continue..._
 
 EJS Site Builder makes it quite easy to add javascript to your application while at the same time integrating nicely with modern and awesome tools like [vite](https://vitejs.dev/) and any javascript framework you can think of.
 

@@ -14,7 +14,6 @@ EJS Site Builder has very little to configure. You can pass the following option
   -o, --public <publicDir>  public directory
   -c, --cache <cacheDir>    cache directory
   -nw, --noWatch            quit after processing all templates
-  -wo, --watchOnly          dont process at start, only watch
   -cc, --clearCache         clear cache on start
   -v, --verbose             log verbosely
   -V, --version             output the version of EJS Site Builder you've installed
@@ -64,10 +63,6 @@ When you use EJS Site Builder [caching](/performance/cache/) all data gets store
 ## Quit EJS Site Builder After Build
 
 On a production build, you probably don't want to keep EJS Site Builder running after the site is built. During development, having EJS Site Builder monitor file system changes and react instantly with [it's effecient dependency tracking](/performance/dependencyTracking/) is what makes EJS Site Builder so much fun to use.
-
-## Don't build, only watch for changes.
-
-If you had to shut down EJS Site Builder and for some reason you don't want to regenerate the entire site, you can start EJS Site Builder from where you left off. This might be useful if your site is thousands of pages long and can't take advantage of caching.
 
 ## Clear Cache on Start
 

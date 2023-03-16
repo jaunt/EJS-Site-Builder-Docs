@@ -15,11 +15,11 @@ Each phase has hooks where you write javascript and provide templates in order t
 
 ### Pre Generation
 
-The [PreGenerate Hook](/templates/preGenerate/) is your first chance to load and massage data that you'll use to render your pages. You might read files or pull data from your APIs before getting it ready for all of your pages.
+The [PreGenerate Hook](/templates/preGenerate/) is your first chance to load and massage data that you'll use to render your pages. You might read files or pull data from your APIs before getting it ready for all of your pages. You often don't need to use this hook, as you're also allowed to ping apis directly during page generation.
 
-For example, perhaps you call a headless wordpress API to download blog data. You'd likely write simple javascript to parse the data, order it, tag it, convert it, cache it, etc.
+But for example, perhaps you call a headless wordpress API to download blog data. You'd likely write simple javascript to parse the data, order it, tag it, convert it, cache it, etc, before rendering all the pages.
 
-Or consider the simple case where you want to use the version from your latest git tag to pass to all pages.
+Or consider the simple case where you want to use the version from your latest git tag to pass to all pages. No need to do that on every page generation.
 
 If you need data that will likely be used across multiple pages, the pre generation hook is the place to fetch and prepare it.
 
@@ -33,12 +33,14 @@ Each template can have its own hook called a [generate script](/templates/genera
 
 For example, you could write a template to render a blog post with a consistent style and layout, with a generate script that feeds the data you pull down from your headless api through the template for each post.
 
-Templates have access to anything you supply from the [PreGenerate Hook](/templates/preGenerate/), [front matter data](/templates/frontmatter/), and of course data passed from [generate scripts](/templates/generateScript/).
+Templates have access to anything you supply as global data from the [PreGenerate Hook](/templates/preGenerate/), [front matter data](/templates/frontmatter/), and of course data passed from [generate scripts](/templates/generateScript/).
 
 ## Post Generation
 
-The [PostGenerate Hook](/templates/postGenerate/) can be very useful, but you may not need it at first. It's a hook where EJS Site Builder sends you information regarding everything that was written by EJS Site Builder to your file system while generating your site, for any purposes you might need.
+The [PostGenerate Hook](/templates/postGenerate/) can be very useful, but you may not need it at first. It's a hook where EJS Site Builder sends you information regarding everything that was written by EJS Site Builder to your file system while generating your site, for any purposes you might need, and you also receive global data that was collected through the build process.
 
-For example, perhaps you want to write out a json data structure with links to all the page that were generated to create a site manifest, or perhaps to format the MPA entry points for the [vite configuration file](/integration/vite/) for production builds.
+For example, perhaps you want to create a site manifest, or perhaps to format the MPA entry points for the [vite configuration file](/integration/vite/) for production builds.
 
-If
+## Watch Phase
+
+After a site build is completed, EJS Site Builder will by default watch your source files for any changes, triggering a re-generate for anything that was updated, or depended on what was updated.

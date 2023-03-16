@@ -56,7 +56,7 @@ Thanks for watching!
 
 Next, make sure you have installed markdown-it and markdown-it-fence in your project. Then you can write a function which takes the JSON string supplied in your md fence, and feeds it to the ejssitebuilder function **renderTemplate** which EJS Site Builder makes available to your template. See details about [renderTemplate here](/templates/generateScript/)
 
-Next we'll demonstrate an example of a shortcode used by the ejssitebuilder code which generated these docs. Check out the sourcecode which uses the same mthod mentioned above. [docsMD.ejs](https://github.com/jaunt/ejssitebuilderDocs/blob/main/ejssitebuilder/templates/generators/docsMD.ejs)
+Next we'll demonstrate an example of a shortcode used by the ejssitebuilder code which generated these docs. Check out the sourcecode which uses the same mthod mentioned above. [docsMD.ejs](https://github.com/jaunt/EJS-Site-Builder-Docs/blob/main/ejssitebuilder/templates/generators/docsMD.ejs)
 
 The important bit of the generate script you would use to render md files which uses the markdown-it-fence pluging looks like this
 
@@ -74,7 +74,7 @@ function yourPlugin(md, options) {
 md.use(yourPlugin);
 ```
 
-The md source code for the this page (the one you are reading now) can be seen here [shortcodes.md](https://github.com/jaunt/ejssitebuilderDocs/blob/main/ejssitebuilder/data/md/guide/shortcodes.md) Take a look at it. You will see after this text that it specifies a shortcode just like this:
+The md source code for the this page (the one you are reading now) can be seen here [shortcodes.md](https://github.com/jaunt/EJS-Site-Builder-Docs/blob/main/ejssitebuilder/data/md/guide/shortcodes.md) Take a look at it. You will see after this text that it specifies a shortcode just like this:
 
 ```md
 :::ejssitebuilder shortcode/infoBox
@@ -88,7 +88,7 @@ The above shortcode tells ejssitebuilder to render the data you pass between the
 { "title": "notice", "description": "this is cool" }
 :::
 
-You can take a look at the very useless and for demonstration purposes shortcode/infobox here: [infoBox.ejs](https://github.com/jaunt/ejssitebuilderDocs/blob/main/ejssitebuilder/templates/shortcode/infoBox.ejs)
+You can take a look at the very useless and for demonstration purposes shortcode/infobox here: [infoBox.ejs](https://github.com/jaunt/EJS-Site-Builder-Docs/blob/main/ejssitebuilder/templates/shortcode/infoBox.ejs)
 
 It simply renders title and description like so:
 
@@ -100,7 +100,7 @@ It simply renders title and description like so:
 </div>
 ```
 
-Here's a live example of rendering the youtube video shortcode from MD. If you look at the bottom of [shortcodes.md](https://github.com/jaunt/ejssitebuilderDocs/blob/main/ejssitebuilder/data/md/guide/shortcodes.md), which describes the page you are reading now, you will see this
+Here's a live example of rendering the youtube video shortcode from MD. If you look at the bottom of [shortcodes.md](https://github.com/jaunt/EJS-Site-Builder-Docs/blob/main/ejssitebuilder/data/md/guide/shortcodes.md), which describes the page you are reading now, you will see this
 
 ```md
 :::ejssitebuilder shortcode/youtube

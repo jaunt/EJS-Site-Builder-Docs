@@ -17,17 +17,9 @@ From the docs, please note this carefully:
 
 This should not be a surprise to you if you use NPM in your other projects. You should never blindly trust NPM modules, nor the code that you write for your generate scripts.
 
-### ESM vs Common JS
-
-As of Jan 2022, typescript has yet to fully support ESM modules, and the Node JS ecosystem is much more mature when it comes to Common JS. What does this mean for you?
+### Common JS
 
 In your [generate scripts](/templates/generateScript/) you have access to "require", which allows you to import modules you add via npm to your project.
-
-If you try to "require" scripts that are ESM only, they will not work.
-
-It might be a while before it's possible to use both ESM and Common JS together, but EJS Site Builder will be updated to follow whatever the community ends up with. For now it will stick to Common JS.
-
-You can follow the typescript issue [here](https://github.com/microsoft/TypeScript/issues/46452)
 
 ### Source Code Stats
 

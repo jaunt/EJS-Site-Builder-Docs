@@ -21,15 +21,15 @@ In your [generate scripts](/templates/generateScript/), you have the option of r
 
 ### Global Data
 
-In your [pre generate script](/templates/preGenerate/), you have the option of resolving global data that is accessible in all templates. So what happens when you tweak "preGenerate.js" after your site is build and while EJS Site Builder is monitoring your template directory? EJS Site Builder is clever enough to detect which template generate scripts accessed the global data, and will rebuild only those that have.
+In your templates, you have the option of resolving global data that is accessible in all templates. So what happens when you tweak a template that writes to global data after your site is build and while EJS Site Builder is monitoring your template directory? EJS Site Builder is clever enough to detect which template generate scripts accessed the global data, and will rebuild only those that have.
 
 ### Template Script References
 
 If you want to use the same generate script from several templates, you can do so by creating a script-only EJS template. See the source code for a script used these very EJS Site Builder docs you are reading for an example:
 
-[docsMD.ejs](https://github.com/jaunt/ejssitebuilderDocs/blob/main/ejssitebuilder/templates/generators/docsMD.ejs).
+[docsMD.ejs](https://github.com/jaunt/EJS-Site-Builder-Docs/blob/main/ejssitebuilder/templates/generators/docsMD.ejs).
 
 The above generate script is referenced from this template:
-[pages.ejs](https://github.com/jaunt/ejssitebuilderDocs/blob/main/ejssitebuilder/templates/pages.ejs)
+[pages.ejs](https://github.com/jaunt/EJS-Site-Builder-Docs/blob/main/ejssitebuilder/templates/pages.ejs)
 
 When you follow this pattern, changes to the referenced template will cause any templates referring to it to also be updated.

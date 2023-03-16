@@ -17,6 +17,7 @@ The usage pattern in your generate scripts is recommended as follows:
 1. Check if you had previously stored something in the cache.
 2. Use the data in your generate script, and/or get any other data you need.
 3. Store anything in the cache you might need for next time in case it needs to be updated.
+4. THe cache object can be used by any template during the pre, generate, post, or watch phase, and will remain if you exit and restart ejs site builder.
 
 When resolving output data, you can update the cache for the keys you want by specifying cache as:
 
@@ -27,7 +28,7 @@ When resolving output data, you can update the cache for the keys you want by sp
 }
 ```
 
-Below is a hypothetical example where we cache an API response for 24 hours:
+Below is a hypothetical example where we cache an API response for 24 hours. Note this is an example of a generate script that is asynchronous but instead of defining an async function, it returns a promise.
 
 ```html
 ---
@@ -36,47 +37,50 @@ generate: cards/*
 
 <script generate>
   const apiUrl = "http://myApi/getJsonData";
-
-  if (cache[apiUrl]) {
-    // this means we had previously cached data an it's still valid
-    // since we cached the entire page request list, we can just return it now
-    resolve({
-      data: cache[apiUrl].data,
-    });
-    return;
-  }
-
-  // our cache is empty, fetch the data.
-
-  const axios = require("axios"); // assumes axios was addeded as a dependency in your project
-  axios
-    .get(apiUrl)
-    .then((result) => {
-      const pages = [];
-      result.data.results.map((item) => {
-        pages.push({
-          path: item.name,
-          data: {
-            id: item.name,
-            title: item.title,
-          },
+  ({ cache }) => {
+    return new Promise(function (resolve, reject) {
+      if (cache[apiUrl]) {
+        // this means we had previously cached data an it's still valid
+        // since we cached the entire page request list, we can just return it now
+        resolve({
+          data: cache[apiUrl].data,
         });
-      });
+        return;
+      }
 
-      // store in our cache and specify how long it lasts
-      cache[apiUrl] = {
-        data: pages,
-        expires: new Date().getTime() + 60 * 60 * 1000 * 24, // cache for 24 hours from now
-      };
+      // our cache is empty, fetch the data.
 
-      // ready to generate!
-      resolve({
-        data: data,
-        cache: cache,
-      });
-    })
-    .catch((error) => {
-      reject(error);
+      const axios = require("axios"); // assumes axios was addeded as a dependency in your project
+      axios
+        .get(apiUrl)
+        .then((result) => {
+          const pages = [];
+          result.data.results.map((item) => {
+            pages.push({
+              path: item.name,
+              data: {
+                id: item.name,
+                title: item.title,
+              },
+            });
+          });
+
+          // store in our cache and specify how long it lasts
+          cache[apiUrl] = {
+            data: pages,
+            expires: new Date().getTime() + 60 * 60 * 1000 * 24, // cache for 24 hours from now
+          };
+
+          // ready to generate!
+          resolve({
+            data: data,
+            cache: cache,
+          });
+        })
+        .catch((error) => {
+          reject(error);
+        });
     });
+  };
 </script>
 ```

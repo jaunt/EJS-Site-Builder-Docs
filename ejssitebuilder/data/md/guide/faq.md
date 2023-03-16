@@ -8,8 +8,11 @@ order: 2.1
 ### What are the goals of EJS Site Builder
 
 - Fast site builds
+- Great DX
 - Avoid unnecessary site rebuilds like the plague
 - Live and Breath Javascript
+- No extra features specific to blogs etc
+- No plugins other than using NPM packages in your generate scripts
 - Near Zero Config
 - Opinionated workflow proven in production.
 - [Integrate](/integration/guides/) well with [Vite](https://vitejs.dev/) and other modern tools.
@@ -24,7 +27,7 @@ Yes. EJS Site Builder leaves it up to you to parse your own data files and pass 
 
 It's very easy to parse markdown in this way. Have a look at the generate script used to make these EJS Site Builder Docs. See how it uses the awesome [markdown-it](https://github.com/markdown-it/markdown-it) module to parse markdown files:
 
-[docsMD.ejs](https://github.com/jaunt/ejssitebuilderDocs/blob/main/ejssitebuilder/templates/generators/docsMD.ejs)
+[docsMD.ejs](https://github.com/jaunt/EJS-Site-Builder-Docs/blob/main/ejssitebuilder/templates/generators/docsMD.ejs)
 
 The sky is the limit. For example, if you wanted to create "sections" in your markdown files that rendered to different sections of your templates, you could use markdown-it [custom containers](https://github.com/markdown-it/markdown-it-container) and pass what you receive into your template variables.
 

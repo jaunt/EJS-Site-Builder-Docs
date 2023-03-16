@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/jaunt/EJS-Site-Builder-Docs#readme",
   "scripts": {
-    "ejssitebuilder": "npx ejssitebuilder --noWatch",
     "serve": "concurrently --kill-others \"npx ejssitebuilder\" \"npm run dev\"",
     "dev": "vite",
     "build": "npx ejssitebuilder -nw && vite build",
