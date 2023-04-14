@@ -45,7 +45,7 @@ The path to templates you include must be relative to the template directory you
 <%- include('user/details', {details: user}); %>
 ```
 
-In the example above, EJS Site Builder will look for a tepmlate called **details.ejs** in a folder it expects to be called _user_ under your templates directory.
+In the example above, EJS Site Builder will look for a template called **details.ejs** in a folder it expects to be called _user_ under your templates directory.
 
 #### Using javascript to iterate through data
 

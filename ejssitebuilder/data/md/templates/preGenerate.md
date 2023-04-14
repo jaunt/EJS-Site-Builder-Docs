@@ -7,7 +7,7 @@ order: 9
 
 Step one in EJS Site Builder's [workflow](/guide/intro/) is to give you the opportunity to create global data for all your templates. You can also use it to render a page.
 
-In order to do so, you must create a file called "preGenerate.js" in your [templates directory](/guide/setup/#directories).
+In order to do so, you must create a file called "preGenerate.ejs" in your [templates directory](/guide/setup/#directories).
 
 The script itself can be quite simple. It can use any javascript (as well as [using npm node.js modules](/performance/underTheHood/#npm) you add to your project). It behaves similiarly to a javascript promise, in that it can either resolve or reject. See [EJS Site Builder scripting basics](/scripts/) for details.
 

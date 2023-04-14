@@ -32,7 +32,7 @@ npm install
 - Install ejssitebuilder
 
 ```bash
-npm add @danglingdev/ejssitebuilder
+npm add @danglingdev/ejs-site-builder
 ```
 
 - Create an ejssitebuilder directory where all the "ingredients" go, and a src directory where vite will serve your site from:

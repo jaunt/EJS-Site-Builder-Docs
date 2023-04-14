@@ -12,9 +12,7 @@ generate:
     dataDir,
     renderTemplate,
   }) => {
-
     var md = require('markdown-it')().use(require('markdown-it-highlightjs'));
-    const path = require("path");
 
     let docs;
     const fs = require("fs");
@@ -73,12 +71,7 @@ generate:
       };
     });
 
-    let toc
-    try {
-      toc = inputs.global.toc
-    } catch {
-      toc = {}
-    }
+    let toc = inputs.global.toc || {}
 
     if (inputs.triggeredBy) {
       const page = mapped[0]

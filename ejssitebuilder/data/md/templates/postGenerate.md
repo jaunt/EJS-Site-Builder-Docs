@@ -9,7 +9,7 @@ If you add a file called **postGenerate.ejs** to the root of your template folde
 
 Whenever files a written during generation, EJS Site Builder keeps track of the details. This data is made available in your postGenerate.ejs script.
 
-Your postGenerate.js script will have access to a javascript object called "output". The stucture is as follows:
+Your postGenerate.ejs script will have access to a javascript object called "output". The stucture is as follows:
 
 ```typescript
 type FileWritten = {
@@ -37,7 +37,7 @@ This is a simple example of a post generate script which simply writes the entir
 
 ## Example Post Generate Script
 
-```javascript
+```html
 <script generate>
   // func is called during the generate phase
   ({ log, inputs, cache, renderTemplate }) => {

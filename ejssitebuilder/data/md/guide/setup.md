@@ -33,7 +33,6 @@ The defaults are shown here:
     public: "./ejssitebuilder/public",
     cache: "./ejssitebuilder/cache",
     noWatch:  false,
-    watchOnly:  false,
     clearCache: false,
     verbose:  false,
   }

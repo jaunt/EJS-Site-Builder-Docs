@@ -7,14 +7,35 @@ order: 8
 
 If you want to render several pages using the same template, specify a generate script at the end of your template.
 
-A generator script can be synchronous or asyncronous. It will be passed a collection of parameters and must return a collection of parameters:
-Your script must be written
+A generator script must be a function that is either synchronous or asyncronous. When generate is called, it will be passed an object with several optional parameters which you can use in your script.
 
-## Inputs
+```html
+<script generate>
+  (
+    {
+      /* Uncomment any of the following optional params to use in your generate script: */
+      // require,
+      // generatePages,
+      // inputs,
+      // getDataFileNames,
+      // cache,
+      // log,
+      // frontMatterParse,
+      // dataDir,
+      // renderTemplate
+    }
+  ) => {
+    /* Code goes here, using any of the inputs above */
+    // log("example of using the supplied console log function")
+  };
+</script>
+```
+
+## Description of parameters passed to your generate function
 
 ### require
 
-Allows you to import node.js compatible npm modules that you have added to your project. **Use at your own risk.**
+Allows you to import node.js compatible npm modules that you have added to your project. **Use 3rd party modules at your own risk.**
 
 ### generatePages
 
@@ -69,32 +90,33 @@ You can call the generate function as many times as you want before your generat
 - **path**: The sub path to generate the template, which will replace the '\*' in your generate script path.
 - **data**: The key-value javascript object to supply to the template to be used as page variables.
 
-Example:
+## Syncronous Example:
 
 ```html
 ---
 generate: posts/*
 ---
+
 <%= description %>
 
 <script generate>
-generate([
-    {
-      path: "first",
-      data: {
-        description: "first post",
-      }
-    },
-    {
-      path: "second",
-      data: {
-        description: "second post",
-      }
-    },
-])
-
-resolve()
-
+  ({ generatePages }) => {
+    generatePages([
+      {
+        path: "first",
+        data: {
+          description: "first post",
+        },
+      },
+      {
+        path: "second",
+        data: {
+          description: "second post",
+        },
+      },
+    ]);
+  };
+</script>
 ```
 
 The above template will generate two posts:
@@ -104,6 +126,60 @@ The above template will generate two posts:
     └── index.html
 └── output/posts/second
     └── index.html
+```
+
+## Asynchrounous Example:
+
+```html
+<script generate>
+  async ({ require, generatePages, inputs, getDataFileNames }) => {
+    const path = require("path");
+    const fs = require("fs");
+    let posts;
+    if (!inputs.triggeredBy) {
+      // ask for file names from the ejssitebuilder/data directory
+      posts = getDataFileNames("blog/*.html"); // can use glob.
+    } else {
+      // if this generate function was triggered after the initial
+      // render, the file which was changed will be passed here
+      posts = [inputs.triggeredBy.path];
+    }
+
+    posts = posts.map((filepath) => {
+      const raw = fs.readFileSync(filepath, "utf8");
+      const p = path.parse(filepath);
+      return {
+        path: p.name,
+        data: {
+          title: "blog post " + p.name,
+          html: raw,
+        },
+      };
+    });
+
+    // maybe we want post data as json to be injested by a javascript component...
+    siteData = {};
+    postData = [];
+    posts.forEach((post) => {
+      postData.push({
+        path: post.path,
+        title: post.title,
+      });
+    });
+    siteData["posts/data.json"] = postData;
+
+    // make a page for each element of posts
+    generatePages(posts);
+
+    // site files will be written
+    // watchGlobs tells ejssitebuilder to monitor
+    // specific folders or files for changes:
+    return {
+      siteFiles: siteData,
+      watchGlobs: ["blog/*.html"],
+    };
+  };
+</script>
 ```
 
 ### Reusing Generate Scripts
